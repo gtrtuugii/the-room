@@ -38,6 +38,9 @@ body {
   margin: 0 auto;
   padding: 0 auto;
   color: #e0e3e8;
+  @media (max-width: 420px) {
+    font-size: 20px;
+ }
 
 }
 .navbar a.navbar-brand:hover {
