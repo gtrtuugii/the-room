@@ -1,0 +1,11 @@
+.chatsidebar{
+    flex: 1;
+    position: relative;
+    background-color: #526D82;
+    height: 100%;
+
+    @media (max-width: 420px) {
+        overflow: hidden;
+        width: 30%;
+     }
+}

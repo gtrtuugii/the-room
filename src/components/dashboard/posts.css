@@ -1,0 +1,167 @@
+.create-post{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: "Rubik",'Press Start 2P','Frisans Std Bold Italic', sans-serif;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.create-post .create-post-main{
+    
+    display: inline;
+    position: relative;
+}
+
+.create-post .create-post-main .card{
+    background-color: #3a3b3c;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
+    min-height: max-content;
+    min-width: 30vw;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 80%);
+    box-shadow: 0 0 2px 2px #48abe0;
+    @media (min-width: 1200px) {
+        position: relative;
+        top: 0;
+        left: 0;
+
+     }
+}
+.create-post .create-post-main .card .card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+    border-radius: 5px;
+    
+}
+
+
+
+.create-post .create-post-main .card .card-header #close-button img{
+    height: 40px;
+    width: 40px;
+    border: none;
+    
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 30%);
+}
+.create-post .create-post-main .card .card-header button{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: none;
+    background-color: #3a3b3c;
+    border-radius: 100%;
+}
+.create-post .create-post-main .card .card-header button img:hover{
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #00a6ff;
+    cursor: pointer;
+}
+
+.create-post .create-post-main .card .card-header button img::after{
+    border-radius: 50%;
+}
+
+.create-post .create-post-main .card .card-header span{
+    color: #e4e6eb;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Rubik",'Press Start 2P','Frisans Std Bold Italic', sans-serif;
+}
+
+.create-post .create-post-main .card .card-body{
+    display: block;
+    background-color: #3a3b3c;
+    gap: 10px;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+}
+
+.create-post .create-post-main .card-body .card-user-info{
+    gap: 10px;
+    padding: auto;
+    margin-bottom: 10px;
+}
+.create-post .create-post-main .card-body .card-user-info img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow:  0px 0px 4px 3px rgb(0 0 0 / 30%);
+}
+.create-post .create-post-main .card-body .card-user-info span{
+    font-weight: bold; 
+    padding: 5px;
+    margin: 2px;
+}
+.create-post .create-post-main .card .card-body input{
+    background-color: #3a3b3c;
+    margin: 2px;
+    border: none;
+    color: #e4e6eb;
+    padding: 10px;
+}
+.create-post .create-post-main .card .card-body input:placeholder{
+    color: #48abe0;
+}
+.create-post .create-post-main .card .card-body textarea{
+    background-color: #3a3b3c;
+    border: none;
+    color: #e4e6eb;
+    max-height: max-content;
+    overflow: auto;
+    resize: none;
+}
+.create-post .create-post-main .card .card-footer {
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 50%);
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    justify-content: space-around;
+}
+
+.create-post .create-post-main .card .card-footer .media img{
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 50%);
+    border-radius: 5px;
+}
+.create-post .create-post-main .card .card-footer .media label{
+    cursor: pointer;
+    font-weight: 500;
+}
+.create-post .create-post-main .card .card-footer .media input{
+    display: none;
+}
+
+.create-post .create-post-main .card .post-button{
+    background-color: #48abe0;
+    border: none;
+    border-radius: 5px;
+    color: #f8f8f8;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+}
+
+.create-post .create-post-main .card .post-button:hover{
+    background-color: #84d4ff;
+    box-shadow: 0 0 10px 2px #00a6ff;
+    cursor: pointer;
+}
+
+.create-post .create-post-main .card .card-header h1{
+    color: black;
+}

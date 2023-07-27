@@ -1,0 +1,72 @@
+
+
+.chats{
+
+    @media (max-width: 420px) {
+        width: 90%;
+
+     }
+}
+
+.chats .user-chat{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    cursor: pointer;
+    box-shadow:  0px 3px 4px 3px rgb(0 0 0 / 16%);
+    border-radius: 5px;
+    @media (max-width: 420px) {
+        width: 90%;
+        padding: 0;
+        margin: 10px;
+     }
+
+}
+.chats .user-chat:hover{
+    background-color: #27374D;
+}
+ 
+.chats .user-chat img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    @media (max-width: 420px) {
+
+        width: 25px;
+        height: 25px;
+     }
+
+}
+
+.chats .user-chat .user-chat-info span{
+    font-weight: 500;
+    font-size: 18px;
+    @media (max-width: 420px) {
+
+        font-size: 9px;
+        text-overflow: ellipsis;
+     }
+}
+
+.chats .user-chat .user-chat-info .last-msg{
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chats .user-chat .user-chat-info p{
+    color: lightgray;    
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+    @media (max-width: 420px) {
+
+        font-size: 7px;
+        text-overflow: ellipsis;
+     }
+}

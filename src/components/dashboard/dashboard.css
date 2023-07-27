@@ -1,0 +1,106 @@
+.dashboard .container {
+  flex: 0 0 auto;
+  display: block;
+  padding: 0;
+  
+  margin: 0;
+  
+}
+ .dashboard{
+  background-color: #282A3A;
+}
+
+.dashboard h1 {
+  color: aliceblue;
+}
+.dashboard #create-post .card-header {
+  height: 1em;
+  padding: 1em;
+  border: 0;
+}
+.dashboard .card-header h4 {
+  font-size: 100%;
+}
+.dashboard .card-body {
+  padding: 0.5em;
+}
+.dashboard .card-footer {
+  padding: 0;
+  border: 0;
+  display: flex;
+}
+
+
+
+#mind-txt {
+  animation: color-change 10s ease infinite;
+}
+
+
+.dashboard .container-fluid #posts{
+  height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: height var(--speed) ease;
+  margin: 1em;
+  padding: 0.5rem;
+  white-space: nowrap;
+  background-color: #282A3A;
+  color: white;
+  border: none;
+  scroll-behavior: smooth;
+  border-radius: 5px;
+}
+#a_title {
+  width: 80%;
+  position: absolute;
+  top: 35px;
+  left: 45px;
+  background-color: whitesmoke;
+}
+
+
+marquee {
+  background-color: #0e0a0a;
+  font-family: "Press Start 2P", -apple-system, sans-serif;
+  color: red;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  border-color: white;
+
+}
+
+.dashboard .container-fluid .create-post-button .row{
+  display:flex;
+}
+
+.dashboard .container-fluid .create-post-button #post-button{
+  display: block; 
+  margin: 0 auto;
+  background-color: #3a3b3c;
+  backdrop-filter: blur(10px);
+  color: #707070;
+  font-weight: 500;
+  border-radius: 20px;
+  height:  3em;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 30%);
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+
+}
+
+.dashboard .container-fluid .create-post-button #post-button:hover{
+  background-color: #404040;
+  backdrop-filter: blur(10px);
+  color: #b9b9b9;
+  transition: background-color 700ms linear;
+  transition: color 700ms linear;
+}
+
+
+.dashboard .container-fluid #posts::-webkit-scrollbar {
+  display: none;
+}

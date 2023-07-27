@@ -1,0 +1,73 @@
+
+
+.login .form-container{
+    background-color: #282A3A;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+    
+}
+.login .form-container .form-wrapper .logo{
+    font-family: "Press Start 2P",'Rubik', sans-serif;
+}
+.login .form-container .form-wrapper .title{
+    font-weight: bold;
+    font-size: larger;
+}
+.login .form-wrapper{
+    background-color: #e4e6eb;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
+}
+.login .form-wrapper form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+
+.login .form-container .form-wrapper form input{
+    border: 1px solid #282A3A;
+    background-color: #e4e6eb; 
+}
+.login .form-wrapper form img{
+    height: 4em;
+    transform: translateX(50px)translateY(5px);
+    border-radius: 5px;
+}
+
+.login .form-wrapper form #avatar{
+    display: none;
+}
+.login .form-container .form-wrapper form button{
+    font-weight: bold;
+    background-color: #282A3A;
+    border: none;
+    padding: 10px;
+    color: #e4e6eb;
+}
+
+.login .form-container .form-wrapper form button:hover{
+    background-color: #5261d0;
+    color: #ffffff;
+    transition: background-color 1000ms linear;
+    transition: color 1000ms linear;
+}
+
+.login .form-wrapper .logo{
+    color: #100901;
+    font-weight: bold;
+    font-size: 24px;
+}
+.login .form-wrapper form #avatar{
+    border: none;
+    background-color: whitesmoke;
+}

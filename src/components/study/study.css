@@ -1,0 +1,78 @@
+.study{
+    background-color: black;
+    @media (min-width: 1200px) {
+        min-width: 100%;
+        min-height: 80vh;
+    }
+}
+
+#carousal-imgs{
+    width: 100%;
+    display: block;
+    height: 65vh;
+    border-radius: 5px;
+}
+.study .upload-files {
+    background-color: #010101;
+    color: whitesmoke;
+    height: 12vh;
+    display: block;
+    align-items: center;
+    border: none;
+}
+
+.study .upload-files label{
+    font-size: 15px;
+    margin: 10px;
+    font-family:   sans-serif;
+}
+
+
+.study .upload-files .input-group input{
+    padding: 10px;
+    border: none;
+    background-color: #808080;
+    color: whitesmoke;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 2px;
+}
+
+.study .upload-files .input-group button{
+    background-color: #ffa31a ;
+    color: #1b1b1b;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.study .upload-files .input-group button::after{
+    background-color: #1b1b1b ;
+    color: #ffa31a;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+
+.progress{
+    height: 20px;
+    gap: 0px;
+    margin: 0px;
+    padding: 0px;
+   
+}
+
+.progress .progress-bar{
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    bottom: none;
+    color: #010101;
+    background-color: #FF0000;
+}
+.study #spotify{
+    height: 10vh;
+    border-radius: 0%;
+    position: absolute;
+    bottom: 0;
+    background-color: #010101;
+}
+

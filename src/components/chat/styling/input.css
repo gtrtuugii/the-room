@@ -1,0 +1,52 @@
+.chat-input{
+    background-color: white;
+    padding: 10px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.chat-input .send{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.chat-input .send input{
+    display: none;
+}
+
+.chat-input .send img{
+    height: 25px;
+    cursor: pointer;
+}
+.chat-input .send label{
+    margin: 0px;
+}
+.chat-input input{
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #27374D;
+    font-size: 18px;
+    &::placeholder{
+        color: lightgray;
+    }
+}
+.chat-input .send button{
+    border: none; 
+    padding: 10px 15px;
+    color: white;
+    background-color: rgb(51, 72, 100);
+}
+
+.chat-input .send button:hover{
+    border: none; 
+    padding: 10px 15px;
+    color: white;
+    background-color: rgb(47, 103, 177);
+}

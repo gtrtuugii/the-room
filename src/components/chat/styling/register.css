@@ -1,0 +1,97 @@
+.register .form-container{
+    background-color: #282A3A;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+}
+.register .form-container .form-wrapper .logo{
+    font-family: "Press Start 2P", sans-serif;
+}
+.register .form-container .form-wrapper .title{
+    font-weight: bold;
+    font-size: larger;
+}
+.register .form-wrapper{
+    background-color: #e4e6eb;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
+}
+.register .form-wrapper form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.register .form-container .form-wrapper form input{
+    border: 1px solid #282A3A;
+    background-color: #e4e6eb; 
+}
+.register .form-wrapper form img{
+    height: 32px;
+    box-shadow: 1px 2px 9px #7d7d7d;
+    border-radius: 5px;
+    width: 32px;
+}
+.register .form-wrapper form img:hover{
+    height: 32px;
+    width: 32px;
+    box-shadow: 1px 2px 9px #257AFD;
+    border-radius: 5px;
+}
+
+.register .form-wrapper form #avatar{
+    display: none;
+}
+
+.register .form-container .form-wrapper form button{
+    font-weight: bold;
+    background-color: #282A3A;
+    border: none;
+    padding: 10px;
+    color: #e4e6eb;
+}
+
+.register .form-container .form-wrapper form button:hover{
+    background-color: #5261d0;
+    color: #ffffff;
+    transition: background-color 1000ms linear;
+    transition: color 1000ms linear;
+}
+.register .form-wrapper form span{
+font-weight: bold;
+}
+
+.register .form-wrapper form span:hover{
+    font-weight: bold;
+    color: #257AFD;
+}
+
+.register .form-wrapper .logo{
+    color: #100901;
+    font-weight: bold;
+    font-size: 24px;
+}
+.register .form-wrapper form #avatar{
+    border: none;
+    background-color: whitesmoke;
+}
+.register .form-wrapper button{
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.register .form-wrapper label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
