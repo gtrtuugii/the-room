@@ -4,7 +4,7 @@ import "./styling/home.css";
 import Sidebar from './ChatSideBar';
 import Chat from './Chat';
 
-const Home = () => {
+const ChatHome = () => {
   
   
     return (
@@ -18,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default ChatHome;

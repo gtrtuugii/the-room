@@ -9,9 +9,9 @@ import Dashboard from "./components/dashboard/dashboard";
 import ToggleSideBar from "./components/sidebar/sidebar";
 import ChatLogin from "./components/chat/Login";
 import ChatRegister from "./components/chat/Register.jsx"
-import ChatHome from "./components/chat/Home";
+import ChatHome from "./components/chat/ChatHome";
 import Study from "./components/study/study";
-import Home from "./components/home/Home";
+import Home from "./components/Intro/Intro";
 
 //  Context files
 import { useContext } from "react";
@@ -33,12 +33,12 @@ export default function App() {
       <BrowserRouter>
         <ToggleSideBar />
         <Routes>
-          <Route exact path="/dashboard" element={<ProctectedRoute><Dashboard/></ProctectedRoute>} />
+          <Route exact path="/home" element={<ProctectedRoute><Dashboard/></ProctectedRoute>} />
           <Route exact path="/login" element={<ChatLogin />} />
           <Route exact path="/register" element={<ChatRegister />} />
-          <Route exact path="/chathome" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
+          <Route exact path="/chat/home" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
           <Route exact path="/study" element={<Study />} />
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>

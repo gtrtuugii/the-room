@@ -1,16 +1,17 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import "./home.css";
+import "./intro.css";
 
-const Home = () => {
+const Intro = () => {
   return (
-    <div className="home-page">
+    <div className="intro">
         <div className="container">
             <div className="row">
                 <div className="col">
                     <Carousel>
                         <Carousel.Item>
                             Hello World
+                            This is a test
                         </Carousel.Item>
                     </Carousel>
                 </div>
@@ -20,4 +21,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Intro;

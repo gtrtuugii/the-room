@@ -33,26 +33,26 @@ export default function ToggleSidebar() {
     ? [
         {
           id: 0,
+          title: "Introduction",
+          url: "/"
+        },
+        {
+          id: 1,
           title: "Home",
           url: "/dashboard"
         },
         {
-          id: 1,
+          id: 2,
           title: "Study Room",
           url: "/study"
         },
         {
           id:3,
           title: "Chat",
-          url: "/home"
+          url: "/chat/home"
         },
         {
           id:4,
-          title: "Services",
-          url: "/services"
-        },
-        {
-          id:5,
           title: "About",
           url: "/about"
         }
@@ -60,8 +60,8 @@ export default function ToggleSidebar() {
     : [
         {
           id: 0,
-          title: "Home",
-          url: "/dashboard"
+          title: "Introduction",
+          url: "/"
         },
         {
           id:2,
@@ -110,9 +110,11 @@ export default function ToggleSidebar() {
             </div>
             {/* Enter fb nav here*/}
 
-            <NavItem icon={<PlusIcon />}></NavItem>
-            <NavItem icon={<BellIcon />} /> 
-            <NavItem icon={<MessengerIcon />}/>
+            <Link to='/home'><NavItem icon={<PlusIcon />}></NavItem></Link>
+            
+            <Link to='/chat/home'><NavItem icon={<MessengerIcon />}/></Link>
+
+
             <NavItem icon={<CaretIcon />}>
               {currentUser
                 ? [<DropdownMenu></DropdownMenu>]
@@ -210,59 +212,15 @@ function DropdownMenu() {
         onEnter={calcHeight}>
         <div className="menu">
           <DropdownItem>My Profile</DropdownItem>
-          <Link to="/home"> <DropdownItem>Chat</DropdownItem> </Link>
-          <Link to="/dashboard"> <DropdownItem>Dashboard</DropdownItem> </Link>
-          <DropdownItem
-            leftIcon={<UserIcon />}
-            rightIcon={<ChevronIcon />}
-            goToMenu="settings">
-            Settings
-          </DropdownItem>
-          <DropdownItem
-            leftIcon="🦧"
-            rightIcon={<ChevronIcon />}
-            goToMenu="animals">
-            Animals
-          </DropdownItem>
+
           <div className="log-out" onClick={logout}>
             <DropdownItem>Log Out</DropdownItem>
           </div>
+
         </div>
       </CSSTransition>
 
-      <CSSTransition
-        in={activeMenu === "settings"}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}>
-        <div className="menu">
-          <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-            <h2>Settings</h2>
-          </DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>HTML</DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>CSS</DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>JavaScript</DropdownItem>
-          <DropdownItem leftIcon={<BoltIcon />}>Awesome!</DropdownItem>
-        </div>
-      </CSSTransition>
 
-      <CSSTransition
-        in={activeMenu === "animals"}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}>
-        <div className="menu">
-          <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-            <h2>Animals</h2>
-          </DropdownItem>
-          <DropdownItem leftIcon="🦘">Kangaroo</DropdownItem>
-          <DropdownItem leftIcon="🐸">Frog</DropdownItem>
-          <DropdownItem leftIcon="🦋">Horse?</DropdownItem>
-          <DropdownItem leftIcon="🦔">Hedgehog</DropdownItem>
-        </div>
-      </CSSTransition>
     </div>
   );
 }
@@ -305,14 +263,14 @@ function GuestDropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
+          <Link to="/">
+            <DropdownItem>Introduction</DropdownItem>
+          </Link>
           <Link to="/login">
-            <DropdownItem>Login</DropdownItem>{" "}
+            <DropdownItem>Login</DropdownItem>
           </Link>
           <Link to="/register">
             <DropdownItem>Create Account</DropdownItem>
-          </Link>
-          <Link to="/home">
-            <DropdownItem>Home</DropdownItem>
           </Link>
         </div>
       </CSSTransition>
