@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/the-room/static/css/main.c7dfc292.css",
-    "main.js": "/the-room/static/js/main.eeded367.js",
+    "main.css": "/the-room/static/css/main.00d6d431.css",
+    "main.js": "/the-room/static/js/main.0e52ec7c.js",
     "static/js/787.b28bcc09.chunk.js": "/the-room/static/js/787.b28bcc09.chunk.js",
     "static/media/Frisans Std Bold Italic.ttf": "/the-room/static/media/Frisans Std Bold Italic.16a917d9d19b00716a53.ttf",
     "static/media/raccoon-icon.svg": "/the-room/static/media/raccoon-icon.4f654b9b7f1029dc50cd9bac5825f4be.svg",
@@ -22,12 +22,12 @@
     "static/media/plus.svg": "/the-room/static/media/plus.d5a88a59d9ab7bb15c7642d9d44ee039.svg",
     "static/media/bolt.svg": "/the-room/static/media/bolt.bbfd3d7aaf23b286af050b7e10125db6.svg",
     "static/media/caret.svg": "/the-room/static/media/caret.17f0a4fb24c6564ffcbd1ce6ce1d6c92.svg",
-    "main.c7dfc292.css.map": "/the-room/static/css/main.c7dfc292.css.map",
-    "main.eeded367.js.map": "/the-room/static/js/main.eeded367.js.map",
+    "main.00d6d431.css.map": "/the-room/static/css/main.00d6d431.css.map",
+    "main.0e52ec7c.js.map": "/the-room/static/js/main.0e52ec7c.js.map",
     "787.b28bcc09.chunk.js.map": "/the-room/static/js/787.b28bcc09.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7dfc292.css",
-    "static/js/main.eeded367.js"
+    "static/css/main.00d6d431.css",
+    "static/js/main.0e52ec7c.js"
   ]
 }
