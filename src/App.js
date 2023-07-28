@@ -11,6 +11,9 @@ import ChatLogin from "./components/chat/Login";
 import ChatRegister from "./components/chat/Register.jsx"
 import ChatHome from "./components/chat/Home";
 import Study from "./components/study/study";
+import Home from "./components/home/Home";
+
+//  Context files
 import { useContext } from "react";
 import { AuthContext } from "./components/context/context";
 //  Main app
@@ -33,9 +36,9 @@ export default function App() {
           <Route exact path="/dashboard" element={<ProctectedRoute><Dashboard/></ProctectedRoute>} />
           <Route exact path="/login" element={<ChatLogin />} />
           <Route exact path="/register" element={<ChatRegister />} />
-          <Route exact path="/home" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
+          <Route exact path="/chathome" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
           <Route exact path="/study" element={<Study />} />
-
+          <Route exact path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
