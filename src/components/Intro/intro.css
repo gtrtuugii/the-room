@@ -1,3 +1,141 @@
 .intro{
+    background-color: #282A3A;
+    font-family: 'Rubik', sans-serif;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (min-height: 820px) {
+        height: 100vh;
+    }
+   
+}
+
+
+.intro .container-fluid{
+    padding: 20px;
+    margin: 20px;
+    height: 90vh;
+}
+.intro .container-fluid #top-row{
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.intro .container-fluid #top-row .card{
+    margin-bottom: 15px;
+}
+.intro #features {
+    overflow: auto;
+    width: auto;
+    @media (max-width: 767px) {
+        display: none;
+        
+    }
+}
+
+.intro #creator{
+    @media (max-width: 767px) {
+        display: none;
+        
+    }
+}
+
+
+.intro #features .card-body span{
+    background-color: #686b81;
+
+}
+
+.intro .card{
+    color: #e4e6eb;
+    border: none;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 30%);
+}
+.intro .card .card-header{
+    background-color: #100901;
+   
+}
+.intro .card .card-body{
+    background-color: #686b81;
+    text-overflow: ellipsis;
+    overflow: auto;
+}
+
+.intro .card .card-footer{
+    background-color: #686b81;
+}
+.intro .container-fluid #top-row #carousal .card{
+
+    height: 40vh;
+}
+
+#carousal .card .card-header{
+    border: none;
+    margin: 0;
+    padding: 10px;
+    max-height: 20%;
+
+}
+#carousal .card .card-body p{
+    color: #100901;
     
 }
+#carousal .card .card-footer{
+    border: none;
+}
+
+#carousal .card .card-footer button{
+    border: none;
+    background-color: #e4e6eb;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px;
+    height: auto;
+}
+
+
+.intro .container-fluid #bot-row{
+    display: flex;
+    justify-content: space-between;
+    height: 30vh;
+}
+#bot-row .col-sm-4 .card{
+    height: 100%;
+    
+}
+#bot-row .col-sm-4 .card .card-body{
+    height: 15vh;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+}
+
+.intro #learn-more{
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+}
+.intro #carousal  h1{
+   
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing;
+    animation-duration: 3s;
+    animation-timing-function: steps(100, end);
+    animation-fill-mode: forwards;
+    width: 0;
+}
+.intro #carousal button{
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0px 4px 10px rgb(0 0 0 / 60%);
+    background-color: #e4e6eb;
+    height: 10px;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
