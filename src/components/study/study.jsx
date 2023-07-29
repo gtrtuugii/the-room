@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { storage } from "../firebase/firebase";
 import { ref, listAll, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { Carousel } from 'react-bootstrap';
@@ -7,6 +7,7 @@ import AddedImage from "../chat/media/checkmark-image.svg"
 import "./study.css";
 import { serverTimestamp } from 'firebase/firestore';
 import { v4 as uuid } from 'uuid';
+import { AuthContext } from '../context/context';
 const Study = () => {
   
 
@@ -15,6 +16,9 @@ const Study = () => {
   const [uploadImg, setUploadImg] = useState(null);
   // progress
   const [percent, setPercent] = useState(0);
+
+  // Auth
+  const { currentUser } = useContext(AuthContext);
 
 
   const getRandomImages = () => {
@@ -35,7 +39,7 @@ const Study = () => {
   }
   const handleSubmit = async () => {
     
-    const storageRef = ref(storage, `anime-gifs/${uploadImg.name}`);
+    const storageRef = ref(storage, `anime-gifs/${ currentUser?.displayName + uploadImg.name}`);
     const uploadTask = uploadBytesResumable(storageRef, uploadImg);
     uploadTask.on(
       "state_changed",
@@ -70,7 +74,7 @@ const Study = () => {
 
     <div className="study">
       <div className="carousal">
-        <Carousel  slide={false} fade={true} indicators={false} keyboard={true} touch={true}>
+        <Carousel  controls={false} slide={false} fade={true} indicators={false} keyboard={true} touch={true}>
           {files.map((img, id)=>(
             <Carousel.Item>
               <img src={img} keyu={id} id='carousal-imgs' alt="..."/>

@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import "./styling/login.css";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
+import { AuthContext } from '../context/context';
 
 const Login = () => {
   const [err, setErr] = useState(false);
   const navigate = useNavigate();
+
+  // Auth
+  const { currentUser } = useContext(AuthContext);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +25,14 @@ const Login = () => {
       setErr(true);
     }
   };
+
+
+
+  useEffect(() => {
+    if(currentUser) navigate("/home")
+  },[currentUser]);
+
+
   return (
     <div className='login'>
       <div className="form-container">

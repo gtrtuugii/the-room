@@ -150,14 +150,13 @@ function Dashboard() {
         posts.push(doc.data().posts)
       })
     });
-
+    
 
     return () => unsubs()
-
-
-
   },);
+  
   console.log(posts)
+  
 
   /*
   const [user, loading, error] = useAuthState(auth);
@@ -188,7 +187,7 @@ function Dashboard() {
   return (
     <div className="dashboard" style={{ zIndex: 0 }}>
       <div className="marquee" id="yzy">
-        <marquee className="font-face-gm">{quote} - Ye</marquee>
+        <marquee className="font-face-gm" onClick={fetchKanyeQuote}>{quote ? quote : <span>Click Me</span>} - Ye</marquee>
       </div>
 
       <div className="container-fluid">

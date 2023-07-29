@@ -109,7 +109,12 @@
     overflow-y: scroll;
     text-overflow: ellipsis;
 }
-
+.intro #creator .card-body::-webkit-scrollbar{
+    display: none;
+}
+.intro #carousal .card-body::-webkit-scrollbar{
+    display: none;
+}
 .intro #learn-more{
     @media (max-width: 767px) {
         width: 100%;

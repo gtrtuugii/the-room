@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 import "./styling/register.css";
@@ -9,6 +9,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { AuthContext } from '../context/context';
 
 const Register = () => {
 
@@ -16,6 +17,9 @@ const Register = () => {
     const [err, setErr] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+      // Auth
+    const { currentUser } = useContext(AuthContext);
   
     const handleSubmit = async (e) => {
       setLoading(true);
@@ -68,7 +72,13 @@ const Register = () => {
         setLoading(false);
       }
     };
+
     
+    useEffect(() => {
+      if (loading) return;
+      if(currentUser) navigate("/home");
+    },[currentUser, loading]);
+
     return (
         <div className="register">
             <div className="form-container">

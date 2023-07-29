@@ -34,12 +34,12 @@ export default function ToggleSidebar() {
         {
           id: 0,
           title: "Introduction",
-          url: "/"
+          url: "/intro"
         },
         {
           id: 1,
           title: "Home",
-          url: "/dashboard"
+          url: "/home"
         },
         {
           id: 2,
@@ -53,15 +53,20 @@ export default function ToggleSidebar() {
         },
         {
           id:4,
-          title: "About",
+          title: "About Toby",
           url: "/about"
         }
       ]
     : [
         {
           id: 0,
-          title: "Introduction",
+          title: "Start here",
           url: "/"
+        },
+        {
+          id: 0,
+          title: "Introduction",
+          url: "/intro"
         },
         {
           id:2,
@@ -104,9 +109,13 @@ export default function ToggleSidebar() {
                 onClick={ToggleSidebar}>
                 <i className="fa fa-bars"></i>
               </button>
+              
               <a className="navbar-brand" href="#">
-                The<strong id="page-title"> Locker Room </strong>
+                <Link to="/intro">
+                  The<strong id="page-title"> Locker Room </strong>
+                  </Link>
               </a>
+              
             </div>
             {/* Enter fb nav here*/}
 
