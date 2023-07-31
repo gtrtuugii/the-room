@@ -34,7 +34,7 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <ToggleSideBar />
-        <Welcome/>
+      
         <Routes>
           <Route exact path="/home" element={<ProctectedRoute><Dashboard/></ProctectedRoute>} />
           <Route exact path="/login" element={<ChatLogin />} />
