@@ -6,6 +6,8 @@
   margin: 0;
   
 }
+
+
  .dashboard{
   background-color: #282A3A;
 }
@@ -80,9 +82,9 @@ marquee {
 .dashboard .container-fluid .create-post-button #post-button{
   display: block; 
   margin: 0 auto;
-  background-color: #3a3b3c;
+  background-color: #3c3f57;
   backdrop-filter: blur(10px);
-  color: #707070;
+  color: #989898;
   font-weight: 500;
   border-radius: 20px;
   height:  3em;

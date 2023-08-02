@@ -115,6 +115,7 @@ const Posts = (props) => {
     
         setText("");
         setImg(null);
+        props.setTrigger(false);
       };
 
     

@@ -124,7 +124,7 @@ export default function ToggleSidebar() {
             <Link to='/chat'><NavItem icon={<MessengerIcon />}/></Link>
 
 
-            <NavItem icon={<CaretIcon />}>
+            <NavItem id="dropdown-item" icon={<CaretIcon />}>
               {currentUser
                 ? [<DropdownMenu></DropdownMenu>]
                 : [<GuestDropdownMenu></GuestDropdownMenu>]}
@@ -149,9 +149,9 @@ export default function ToggleSidebar() {
                   return (
                     <li className="menu-items" key={index}>
                       <Link to={menu.url}>
-                      <i className="sd-link">
+                      <span className="sd-link">
                         {menu.title}
-                      </i>
+                      </span>
                       </Link> 
                     </li>
                   );
@@ -172,7 +172,7 @@ function NavItem(props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <li className="nav-item">
+    <li className="nav-item" id="nav-item">
       <span  className="icon-button" onClick={() => setOpen(!open)}>
         {props.icon}
       </span>
@@ -198,14 +198,14 @@ function DropdownMenu() {
 
   function DropdownItem(props) {
     return (
-      <a
-        href="#"
+      <span
+        
         className="menu-item"
         onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
-      </a>
+      </span>
     );
   }
   return (
@@ -250,14 +250,14 @@ function GuestDropdownMenu() {
 
   function DropdownItem(props) {
     return (
-      <a
+      <span
         href="#"
         className="menu-item"
         onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
-      </a>
+      </span>
     );
   }
   return (

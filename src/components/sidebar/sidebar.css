@@ -288,3 +288,9 @@ body {
   transform: translateX(110%);
   transition: all var(--speed) ease;
 }
+ .navbars #nav-item {
+  color: #1abc9c;
+  font-weight: 600px;
+  font-family: 'Rubik', 'Press Start 2P', sans-serif;
+  cursor: pointer;
+}

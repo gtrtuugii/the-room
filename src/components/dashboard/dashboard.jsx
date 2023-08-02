@@ -145,15 +145,15 @@ function Dashboard() {
   useEffect(()=>{
 
 
-    const unsubs = onSnapshot(colRef, (snapshot) =>{
-      snapshot.docs.forEach((doc) => {
-        posts.push(doc.data().posts)
-      })
+    const unsubs = onSnapshot(colRef, (snapshot) => {
+      const data = snapshot.docs.map((doc) => doc.data().posts);
+      setPosts(data);
     });
     
-
-    return () => unsubs()
-  },);
+    const sortedPosts = posts.flat().sort((a, b) => new Date(b.date) - new Date(a.date));
+    setPosts(sortedPosts);
+    return () => unsubs();
+  },[]);
   
   console.log(posts)
   
@@ -212,16 +212,14 @@ function Dashboard() {
           <div className="col-sm-7" id="posts">
 
 
-
-            {
-              posts.map((p) => (
-                p.map((item)=>(
-                    <Post post={item}/>  
-                  )
-                )
-              ) 
-            )
-            }
+          {posts
+            .flat() // Flatten the array of arrays into a single array
+            .slice() // Create a shallow copy to avoid modifying the original array
+            .sort((a, b) => b.date - a.date) // Sort by date in descending order
+            .map((item, index) => (
+              <Post key={`post_${index}`} post={item} />  
+            ))
+          }
             
             
             
