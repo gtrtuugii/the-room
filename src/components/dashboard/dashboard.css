@@ -9,7 +9,9 @@
  .dashboard{
   background-color: #282A3A;
 }
-
+.dashboard .marquee{
+  cursor: pointer;
+}
 .dashboard h1 {
   color: aliceblue;
 }

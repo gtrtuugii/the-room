@@ -49,7 +49,7 @@ export default function ToggleSidebar() {
         {
           id:3,
           title: "Chat",
-          url: "/chat/home"
+          url: "/chat"
         },
         {
           id:4,
@@ -121,7 +121,7 @@ export default function ToggleSidebar() {
 
             <Link to='/home'><NavItem icon={<PlusIcon />}></NavItem></Link>
             
-            <Link to='/chat/home'><NavItem icon={<MessengerIcon />}/></Link>
+            <Link to='/chat'><NavItem icon={<MessengerIcon />}/></Link>
 
 
             <NavItem icon={<CaretIcon />}>

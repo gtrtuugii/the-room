@@ -41,10 +41,10 @@ export default function App() {
           <Route exact path="/home" element={<ProctectedRoute><Dashboard/></ProctectedRoute>} />
           <Route exact path="/login" element={<ChatLogin />} />
           <Route exact path="/register" element={<ChatRegister />} />
-          <Route exact path="/chat/home" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
+          <Route exact path="/chat" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
           <Route exact path="/study" element={<ProctectedRoute><Study/></ProctectedRoute>} />
           <Route exact path="/intro" element={<Intro />} />
-          <Route exact path="" element={<Welcome />} />
+          <Route exact path="/" element={<Welcome />} />
           <Route exact path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
