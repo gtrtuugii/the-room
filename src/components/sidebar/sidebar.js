@@ -61,7 +61,7 @@ export default function ToggleSidebar() {
         {
           id: 0,
           title: "Start here",
-          url: "/"
+          url: "/the-room"
         },
         {
           id: 0,
@@ -272,7 +272,7 @@ function GuestDropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <Link to="/">
+          <Link to="/intro">
             <DropdownItem>Introduction</DropdownItem>
           </Link>
           <Link to="/login">
