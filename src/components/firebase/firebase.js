@@ -80,7 +80,7 @@ const signInWithGoogle = async () => {
     alert(err.message);
   }
 };
-const createPost = async () => {};
+
 
 const logInWithEmailAndPassword = async (email, password) => {
   try {
