@@ -44,7 +44,7 @@ export default function App() {
           <Route exact path="/chat" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
           <Route exact path="/study" element={<ProctectedRoute><Study/></ProctectedRoute>} />
           <Route exact path="/intro" element={<Intro />} />
-          <Route exact path="/#" element={<Welcome />} />
+          <Route exact path="/the-room" element={<Welcome />} />
           <Route exact path="/about" element={<About />} />
         </Routes>
       </HashRouter>
