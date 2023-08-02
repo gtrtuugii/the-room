@@ -61,7 +61,7 @@ export default function ToggleSidebar() {
         {
           id: 0,
           title: "Start here",
-          url: "/the-room"
+          url: "/#"
         },
         {
           id: 0,
