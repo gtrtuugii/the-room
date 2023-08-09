@@ -1,12 +1,21 @@
 
 
 .chats{
-
-    @media (max-width: 420px) {
-        width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    height: 80%;
+    @media (max-width: 425px) {
+        max-width: auto;
+        margin: 0;
+        
 
      }
 }
+
+.chats::-webkit-scrollbar {
+    display: none;
+  }
 
 .chats .user-chat{
     padding: 10px;
@@ -17,11 +26,13 @@
     cursor: pointer;
     box-shadow:  0px 3px 4px 3px rgb(0 0 0 / 16%);
     border-radius: 5px;
-    @media (max-width: 420px) {
+    
+    @media (max-width: 425px) {
         width: 90%;
         padding: 0;
         margin: 10px;
      }
+    
 
 }
 .chats .user-chat:hover{
@@ -33,7 +44,7 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    @media (max-width: 420px) {
+    @media (max-width: 425px) {
 
         width: 25px;
         height: 25px;
@@ -44,7 +55,7 @@
 .chats .user-chat .user-chat-info span{
     font-weight: 500;
     font-size: 18px;
-    @media (max-width: 420px) {
+    @media (max-width: 425px) {
 
         font-size: 9px;
         text-overflow: ellipsis;
@@ -55,6 +66,11 @@
     
     overflow: hidden;
     text-overflow: ellipsis;
+    @media (max-width: 375px) {
+
+        font-size: 5px;
+        text-overflow: ellipsis;
+     }
 }
 
 .chats .user-chat .user-chat-info p{
@@ -64,7 +80,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100px;
-    @media (max-width: 420px) {
+    @media (max-width: 425px) {
 
         font-size: 7px;
         text-overflow: ellipsis;

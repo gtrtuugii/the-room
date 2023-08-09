@@ -15,17 +15,28 @@ const Navbar = () => {
       isOpen === true ? setIsopen(false) : setIsopen(true);
   }
 
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      // Clear any other necessary data or states related to the user session
+      // Redirect the user to the appropriate page after logout
+    } catch (error) {
+      console.error("Logout Error:", error);
+    }
+  };
+
   return (
      
       <div className='chatnavbar'>
-
-        <div className="user">
-          <img src={currentUser.photoURL} alt=""/>
-          <span className='user-name'> {currentUser.displayName} </span>
-          <div className="power-button">
-            <img className='power' onClick={()=> signOut(auth)} src={Power} alt=''/>
-            <span class="tooltiptext">Sign out</span>
-          </div>
+        <div className="user">         
+            <img src={currentUser?.photoURL} alt=""/>
+            <span className='user-name'> {currentUser?.displayName} </span>
+        </div>
+        <div className="user-right">
+            <div className="power-button" onClick={handleLogout}>
+              <img className='power'  src={Power} alt=''/>
+              <span className="tooltiptext" >Sign out</span>
+            </div>
         </div>
       </div>
 

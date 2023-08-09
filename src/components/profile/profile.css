@@ -1,0 +1,39 @@
+.profile{
+    background-color: aqua;
+    height: 93vh;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+.profile .container{
+    background-color: rgb(54, 173, 133);
+    height: 100%;
+    width: 100%;
+}
+
+.profile .container .header{
+    background-color: blue;
+    padding: 10px;
+    width: 100%;
+    margin-right: 5px;
+    display: flex;
+    gap: 10px;
+}
+.profile .container .header img{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+
+.profile .container .header .user{
+    display: block;
+}
+
+.profile .container .hedaer .user .user-info {
+    display: flex;
+}
+
+.profile .container .hedaer .user .user-info span{
+    font-size: 10px;
+}

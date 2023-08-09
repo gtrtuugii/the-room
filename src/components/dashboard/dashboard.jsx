@@ -155,7 +155,7 @@ function Dashboard() {
     return () => unsubs();
   },[]);
   
-  console.log(posts)
+  
   
 
   /*

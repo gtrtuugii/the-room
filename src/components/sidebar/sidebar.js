@@ -118,10 +118,14 @@ export default function ToggleSidebar() {
               
             </div>
             {/* Enter fb nav here*/}
+           
 
-            <Link to='/home'><NavItem icon={<PlusIcon />}></NavItem></Link>
+
+         
+          {currentUser && <Link to='/home'><NavItem icon={<PlusIcon />}></NavItem></Link>}
             
-            <Link to='/chat'><NavItem icon={<MessengerIcon />}/></Link>
+          {currentUser && <Link to='/chat'><NavItem icon={<MessengerIcon />}/></Link>}
+       
 
 
             <NavItem id="dropdown-item" icon={<CaretIcon />}>
@@ -220,7 +224,8 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem>My Profile</DropdownItem>
+          <Link to="/profile"><DropdownItem>My Profile</DropdownItem></Link>
+          
 
           <div className="log-out" onClick={logout}>
             <DropdownItem>Log Out</DropdownItem>
