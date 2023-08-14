@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import "./styling/login.css";
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { AuthContext } from '../context/context';
 
 const Login = () => {
   const [err, setErr] = useState(false);
   const navigate = useNavigate();
-
-  // Auth
   const { currentUser } = useContext(AuthContext);
 
 
@@ -19,12 +17,33 @@ const Login = () => {
     const password = e.target[1].value;
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/home")
-    } catch (err) {
-      setErr(true);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      if (user.emailVerified) {
+        navigate('/home');
+      } else {
+        setErr('Please verify your email before logging in.');
+        await sendEmailVerification(user);
+      }
+    } catch (error) {
+      if (error.code === 'auth/invalid-email') {
+        setErr('Invalid email format');
+      } else if (error.code === 'auth/wrong-password') {
+        setErr('Invalid password');
+      } else {
+        setErr('Something went wrong');
+      }
     }
   };
+
+
+  useEffect(() => {
+    if (currentUser && currentUser.emailVerified){
+      navigate('/home');
+    }
+    //if (!currentUser) return navigate("/login");
+  }, [currentUser]);
 
 
 
@@ -43,7 +62,7 @@ const Login = () => {
                 <button className="btn"> Login </button>
             </form>
            
-            {err && <span style={{ color: "red" }}>Something went wrong</span>}
+            {err && <span style={{ color: "red" }}>{err}</span>}
             <p>Don't have an account? <Link to="/register">Register.</Link></p>
         </div>
     </div>

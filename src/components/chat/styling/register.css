@@ -95,3 +95,17 @@ font-weight: bold;
     font-size: 12px;
     cursor: pointer;
 }
+
+.register .form-container .form-wrapper form .error {
+    color: red;
+    font-weight: 600;
+}
+
+.register .form-container .form-wrapper form .resend {
+    color: rgb(138, 138, 255);
+    cursor: pointer;
+}
+.register .form-container .form-wrapper form .resend:hover {
+    color: blue;
+    cursor: pointer;
+}

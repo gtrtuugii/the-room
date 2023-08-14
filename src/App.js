@@ -15,6 +15,7 @@ import Intro from "./components/Intro/Intro";
 import About from "./components/about/About.jsx";
 import Welcome from "./components/welcome/Welcome.jsx";
 import Profile from "./components/profile/profile";
+import CheckEmail from "./components/chat/check_email";
 
 //  Context files
 import { useContext, useState, useEffect } from "react";
@@ -25,9 +26,14 @@ export default function App() {
 
   const { currentUser } = useContext(AuthContext);
   const [initialLoad, setInitialLoad] = useState(true);
+
+
   const ProctectedRoute = ({children}) =>{
     if(!currentUser){
       return <Navigate to="/login"/>
+    }
+    else if(!currentUser.emailVerified){
+      return <Navigate to="/check-mail"/>
     }
     return children
   }
@@ -42,7 +48,7 @@ export default function App() {
         <ToggleSideBar />
       
         <Routes>
-          <Route exact path="/home" element={currentUser ? <ProctectedRoute><Dashboard/></ProctectedRoute> : <Navigate to="/login" />} />
+          <Route exact path="/home" element={ <ProctectedRoute><Dashboard/></ProctectedRoute> } />
           <Route exact path="/login" element={<ChatLogin />} />
           <Route exact path="/register" element={<ChatRegister />} />
           <Route exact path="/chat" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
@@ -50,7 +56,14 @@ export default function App() {
           <Route exact path="/intro" element={<Intro />} />
           <Route exact path="/" element={<Welcome />} />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/profile" element={<Profile />} />
+          {currentUser && (
+            <Route
+              exact
+              path={`/profile/${currentUser.uid}`}
+              element={<ProctectedRoute><Profile/></ProctectedRoute>}
+            />
+            )}
+          <Route exact path='/check-email' element={<CheckEmail user={currentUser}/>} />
         </Routes>
       </HashRouter>
     </div>

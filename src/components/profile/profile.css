@@ -1,39 +1,95 @@
 .profile{
-    background-color: aqua;
+    background-color: #282A3A;
     height: 93vh;
     font-family: 'Rubik', sans-serif;
+    margin: 0;
 }
 
 
 .profile .container{
-    background-color: rgb(54, 173, 133);
+    
     height: 100%;
     width: 100%;
+    padding: 10px;
+    
 }
 
 .profile .container .header{
-    background-color: blue;
-    padding: 10px;
+    background-color:#12131e;
+    box-shadow: 0px 15px rgb(0 0 0 / 16%);
     width: 100%;
     margin-right: 5px;
     display: flex;
     gap: 10px;
+    overflow: hidden;
+    border-radius: 5px 5px 0px 0px;
 }
 .profile .container .header img{
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
+    margin: 5px;
     border-radius: 50%;
+    transition:  .5s ease;
+    object-fit: cover;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+}
+
+.profile .container .header img:hover{
+    scale: 120%;
 }
 
 
 .profile .container .header .user{
     display: block;
+    color: #d9dde6;
+    padding: 5px;
+    
 }
 
-.profile .container .hedaer .user .user-info {
+.profile .container .header .user .user-info {
     display: flex;
+    color: #b9b9b9;
+    gap: 10px;
+    
 }
 
-.profile .container .hedaer .user .user-info span{
-    font-size: 10px;
+
+
+.profile .container .header .user .user-info span{
+    font-size: 20px;
+    
+}
+
+.profile .container .header .user .profile-buttons button{
+    color: #e4e6eb;
+    border: none;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+}
+.profile .container .main-body .main-body-selection{
+    display: flex;
+    justify-content: space-around;
+    background-color:#212330;
+    
+    box-shadow: 0px 4px 0px 0px rgb(0 0 0 / 16%);
+    border: none;
+}
+
+.profile .container .main-body .main-body-selection h1{
+    color: #e4e6eb;
+    cursor: pointer;
+    
+    
+}
+
+.profile .container .main-body{
+    background-color:#474a61;
+    color: #e4e6eb;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+    
 }

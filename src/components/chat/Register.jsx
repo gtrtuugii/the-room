@@ -5,10 +5,10 @@ import "./styling/register.css";
 import AddImage from "./media/addimgs.svg"
 
 // Firebase imports
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { AuthContext } from '../context/context';
 
 const Register = () => {
@@ -17,10 +17,46 @@ const Register = () => {
     const [err, setErr] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
+    const [errors, setErrors] = useState({});
       // Auth
     const { currentUser } = useContext(AuthContext);
-  
+
+
+    // Validation Check for input
+    const validateRegistrationInput = async (username, email, password) => {
+      const errors = {};
+
+      // Check for illegal usernames or if username is taken
+      const illegalUsernames = ['admin', 'root', 'superuser', 'Admin', 'Moderator', 'Root', 'Superuser', 'SuperUser', 'Anonymous', 'Anon' ]; // Initial list
+
+      // Fetch all display names from the Firestore collection 'users'
+      const usersCollectionRef = collection(db, 'users'); 
+      const querySnapshot = await getDocs(usersCollectionRef);
+      const allDisplayNames = querySnapshot.docs.map((doc) => doc.data().displayName);
+
+      // Add allDisplayNames to the illegalUsernames list
+      illegalUsernames.push(...allDisplayNames);
+
+      if (illegalUsernames.includes(username)) {
+        errors.username = 'Username is not allowed';
+      }
+
+      // Check password requirements
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      if (!passwordRegex.test(password)) {
+        errors.password = 'Password must have at least 8 characters, 1 uppercase letter, and 1 number';
+      }
+
+      // Check valid email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errors.email = 'Invalid email format';
+      }
+
+      return errors;
+      };
+
+    // Handle Submit event
     const handleSubmit = async (e) => {
       setLoading(true);
       e.preventDefault();
@@ -28,56 +64,80 @@ const Register = () => {
       const email = e.target[1].value;
       const password = e.target[2].value;
       const file = e.target[3].files[0];
-  
-      try {
-        //Create user
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-  
-        //Create a unique image name
-        const date = new Date().getTime();
-        const storageRef = ref(storage, 'user-profiles/' + `${displayName + date}`);
 
-        await uploadBytesResumable(storageRef, file).then(() => {
-          getDownloadURL(storageRef).then(async (downloadURL) => {
-            try {
-              //Update profile
-              await updateProfile(res.user, {
-                displayName,
-                photoURL: downloadURL,
-              });
-              //create user on firestore
-              await setDoc(doc(db, "users", res.user.uid), {
-                uid: res.user.uid,
-                authProvider: "local",
-                displayName,
-                email,
-                photoURL: downloadURL,
-              });
-              await setDoc(doc(db, "posts", res.user?.displayName), {
+      const validationErrors = await validateRegistrationInput(displayName, email, password);
+      setErrors(validationErrors);
 
-              });
+      if (Object.keys(validationErrors).length === 0) {
+        try {
+          //Create user
+          const res = await createUserWithEmailAndPassword(auth, email, password);
+          await sendEmailVerification(res.user);
+          //Create a unique image name
+          const date = new Date().getTime();
+          const storageRef = ref(storage, 'user-profiles/' + `${email + date}`);
   
-              //create empty user chats on firestore
-              await setDoc(doc(db, "userChats", res.user.uid), {});
-              navigate("/home");
-            } catch (err) {
-              console.log(err);
-              setErr(true);
-              setLoading(false);
-            }
+          await uploadBytesResumable(storageRef, file).then(() => {
+            getDownloadURL(storageRef).then(async (downloadURL) => {
+              try {
+                //Update profile
+                await updateProfile(res.user, {
+                  displayName,
+                  photoURL: downloadURL,
+                });
+                //create user on firestore
+                await setDoc(doc(db, "users", res.user.uid), {
+                  uid: res.user.uid,
+                  authProvider: "local",
+                  displayName,
+                  email,
+                  photoURL: downloadURL,
+                });
+                await setDoc(doc(db, "posts", res.user?.uid), {
+  
+                });
+    
+                //create empty user chats on firestore
+                await setDoc(doc(db, "userChats", res.user.uid), {});
+                
+                
+              } catch (err) {
+                setErr(true);
+                setLoading(false);
+                
+              }
+            });
           });
-        });
-      } catch (err) {
-        setErr(true);
-        setLoading(false);
+        } catch (err) {
+          setErr(true);
+          setLoading(false);
+          
+          
+        }
+        navigate('/check-email');
+        
+        
       }
+ 
     };
+
+    // const resendEmail = async()=>{
+    //   if (currentUser && !currentUser.emailVerified) {
+    //     await sendEmailVerification(currentUser);
+    //   }
+    // }
 
     
     useEffect(() => {
       if (loading) return;
-      if(currentUser) navigate("/home");
-    },[currentUser, loading]);
+      
+    
+      // Check if the user is logged in and has a valid currentUser object
+      if (currentUser && currentUser.emailVerified) {
+        navigate("/home");
+      }
+    }, [currentUser, loading]);
+    
 
     return (
         <div className="register">
@@ -98,8 +158,13 @@ const Register = () => {
                         <input className="form-control" id="avatar"  type="file"></input>
 
                         <button className="btn"> Register </button>
-                        {loading && "Uploading and compressing the image please wait..."}
                         {err && <span style={{ color: "red" }}>Something went wrong</span>}
+                        {errors.username && <p className="error">{errors.username}</p>}
+                        {errors.email && <p className="error">{errors.email}</p>}
+                        {errors.password && <p className="error">{errors.password}</p>}
+                        {loading && "Joining the room please wait..."}
+
+                        
                     </form>
                     <p>Have an account? <Link to="/login"> Login </Link> instead.</p>
                     

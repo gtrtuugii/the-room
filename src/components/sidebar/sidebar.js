@@ -29,7 +29,7 @@ export default function ToggleSidebar() {
   const navigate = useNavigate();
 
   // Menu items to be displayed to Users
-  const menuItems = currentUser
+  const menuItems = (currentUser && currentUser.emailVerified)
     ? [
         {
           id: 0,
@@ -122,14 +122,14 @@ export default function ToggleSidebar() {
 
 
          
-          {currentUser && <Link to='/home'><NavItem icon={<PlusIcon />}></NavItem></Link>}
+          {currentUser && currentUser.emailVerified && <Link to='/home'><NavItem icon={<PlusIcon />}></NavItem></Link>}
             
-          {currentUser && <Link to='/chat'><NavItem icon={<MessengerIcon />}/></Link>}
+          {currentUser && currentUser.emailVerified && <Link to='/chat'><NavItem icon={<MessengerIcon />}/></Link>}
        
 
 
             <NavItem id="dropdown-item" icon={<CaretIcon />}>
-              {currentUser
+              {currentUser && currentUser.emailVerified
                 ? [<DropdownMenu></DropdownMenu>]
                 : [<GuestDropdownMenu></GuestDropdownMenu>]}
             </NavItem>
@@ -212,6 +212,7 @@ function DropdownMenu() {
       </span>
     );
   }
+  const { currentUser } = useContext(AuthContext);
   return (
     <div
       className="dropdown"
@@ -224,12 +225,13 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <Link to="/profile"><DropdownItem>My Profile</DropdownItem></Link>
+          
+          <Link to={`/profile/${currentUser.uid}`}><DropdownItem>My Profile</DropdownItem></Link>
           
 
-          <div className="log-out" onClick={logout}>
-            <DropdownItem>Log Out</DropdownItem>
-          </div>
+          
+          <DropdownItem onClick={logout}>Log Out</DropdownItem>
+          
 
         </div>
       </CSSTransition>

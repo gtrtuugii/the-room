@@ -20,8 +20,7 @@ const Posts = (props) => {
     const [img, setImg] = useState(null);
 
     const { currentUser } = useContext(AuthContext);
-    const { data } = useContext(ChatContext);
-
+    
     const handlePost = async () => {
         if (img) {
           if(!text === '')
@@ -41,7 +40,7 @@ const Posts = (props) => {
               async () => {
                 const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                 
-                await updateDoc(doc(db, "posts", currentUser?.displayName), {
+                await updateDoc(doc(db, "posts", currentUser?.uid), {
                   posts: arrayUnion({
                     id: uuid(),
                     title: title,
@@ -73,7 +72,7 @@ const Posts = (props) => {
               async () => {
                 const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                 
-                await updateDoc(doc(db, "posts", currentUser?.displayName), {
+                await updateDoc(doc(db, "posts", currentUser?.uid), {
                   posts: arrayUnion({
                     id: uuid(),
                     title: title,
@@ -97,7 +96,7 @@ const Posts = (props) => {
     
     
         } else {
-          await updateDoc(doc(db, "posts", currentUser?.displayName), {
+          await updateDoc(doc(db, "posts", currentUser?.uid), {
             posts: arrayUnion({
               id: uuid(),
               title: title,

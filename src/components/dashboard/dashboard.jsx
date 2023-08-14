@@ -1,5 +1,5 @@
 // Components and Dependencies
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -32,6 +32,9 @@ function Dashboard() {
 
   const colRef = collection(db, "posts");
 
+  const [visiblePosts, setVisiblePosts] = useState(3); // Number of posts to display initially
+  const [postsToLoad, setPostsToLoad] = useState(10); // Number of posts to load each time
+  const postsContainerRef = useRef(null);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -43,9 +46,7 @@ function Dashboard() {
     }
   };
 
-  const handlePopup =() => {
 
-  };
 
   const handleSend = async () => {
     if (img) {
@@ -142,47 +143,55 @@ function Dashboard() {
       console.error(error);
     }
   }
+
+  const loadMorePosts = () => {
+    setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + postsToLoad);
+  };
+
+  const handleScroll = () => {
+    const postsContainer = postsContainerRef.current;
+    const containerHeight = postsContainer.clientHeight;
+    const scrollTop = postsContainer.scrollTop;
+    const scrollHeight = postsContainer.scrollHeight;
+
+    // Check if the user has scrolled to the bottom of the container
+    if (scrollTop + containerHeight >= scrollHeight - 100) {
+      // Load more posts
+      loadMorePosts();
+    }
+  };
+
+  const scrollToTop = () => {
+    const postsContainer = postsContainerRef.current;
+    postsContainer.scrollTop = 0;
+  };
+
+
   useEffect(()=>{
+
+    // Add an event listener to listen for scroll events on the posts container
+    const postsContainer = postsContainerRef.current;
+    postsContainer.addEventListener('scroll', handleScroll);
 
 
     const unsubs = onSnapshot(colRef, (snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data().posts);
-      setPosts(data);
+      const allPosts = data.flat();
+      const sortedPosts = allPosts.sort((a, b) => b.date - a.date);
+      setPosts(sortedPosts);
     });
     
     const sortedPosts = posts.flat().sort((a, b) => new Date(b.date) - new Date(a.date));
     setPosts(sortedPosts);
-    return () => unsubs();
+    return () => {
+      unsubs();
+      // Remove the event listener when the component unmounts
+      postsContainer.removeEventListener('scroll', handleScroll);
+    }
+    
+
   },[]);
   
-  
-  
-
-  /*
-  const [user, loading, error] = useAuthState(auth);
-  const [name, setName] = useState("");
-  const [studentID, setstudentID] = useState("");
-  const [checkstat, setCheck] = useState("");
-  //const navigate = useNavigate();
-
-  const fetchUserName = async () => {
-    try {
-      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
-
-      const doc = await getDocs(q);
-      const data = doc.docs[0].data();
-      setName(data.name);
-    } catch (err) {
-      console.error(err);
-      alert("An error occured while fetching user data");
-    }
-  };
-/*
-  useEffect(() => {
-    if (loading) return;
-    if (!user) return navigate("/");
-    fetchUserName();
-  }, [user, loading]);*/
 
   return (
     <div className="dashboard" style={{ zIndex: 0 }}>
@@ -201,6 +210,9 @@ function Dashboard() {
               <button className="btn" id="post-button" onClick={() => setPopup(true)} >
                 What's on your <strong id="mind-txt"> mind, </strong> {  currentUser?.displayName}?
               </button>
+              <button className="btn" id="back-to-top" onClick={scrollToTop}>
+                ▲
+              </button>
            
           </div>
         </div>
@@ -209,21 +221,17 @@ function Dashboard() {
       <div className="container-fluid">
         <div className="row justify-content-sm-center">
        
-          <div className="col-sm-7" id="posts">
-
-
+          <div className="col-sm-7" id="posts" ref={postsContainerRef}>
           {posts
-            .flat() // Flatten the array of arrays into a single array
-            .slice() // Create a shallow copy to avoid modifying the original array
-            .sort((a, b) => b.date - a.date) // Sort by date in descending order
+            .slice(0, visiblePosts) // Slice only the visible posts
             .map((item, index) => (
               <Post key={`post_${index}`} post={item} />  
             ))
           }
-            
-            
-            
           </div>
+          <button className="btn" id="back-to-top-bot" onClick={scrollToTop}>
+          ▲
+        </button>
         </div>
       </div>
     </div>
