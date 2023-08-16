@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/the-room/static/css/main.91066eb6.css",
-    "main.js": "/the-room/static/js/main.8cc5f4dc.js",
+    "main.css": "/the-room/static/css/main.ce573d06.css",
+    "main.js": "/the-room/static/js/main.c09b6f7a.js",
     "static/js/787.b28bcc09.chunk.js": "/the-room/static/js/787.b28bcc09.chunk.js",
     "static/media/bg.jpg": "/the-room/static/media/bg.5d9686b18991716a6aa9.jpg",
     "static/media/headshot.png": "/the-room/static/media/headshot.d115bc1f33ae988b32df.png",
@@ -15,24 +15,27 @@
     "static/media/cube.svg": "/the-room/static/media/cube.c92689872e80f944e9fd028f61bc3dcc.svg",
     "static/media/power.svg": "/the-room/static/media/power.6d9056fead65ae8a6bb266cdbd304792.svg",
     "index.html": "/the-room/index.html",
+    "static/media/edit-box-icon.svg": "/the-room/static/media/edit-box-icon.93073282719e3791f2d9bce9dd72e22b.svg",
     "static/media/more-icon.svg": "/the-room/static/media/more-icon.dcad8b102ed3491c17bc8d7b728d733b.svg",
+    "static/media/four-squares-icon.svg": "/the-room/static/media/four-squares-icon.c9009c99f8ddccb70f689120525503bd.svg",
     "static/media/add-user-icon.svg": "/the-room/static/media/add-user-icon.daf8a2deb4e353dc09cf5068c204745a.svg",
     "static/media/cog.svg": "/the-room/static/media/cog.8c5b9138d8c4be979ec844f26605245f.svg",
     "static/media/bell.svg": "/the-room/static/media/bell.f0c76da202b5530dc5ae44ada6df4fa7.svg",
     "static/media/close-button-icon.svg": "/the-room/static/media/close-button-icon.8d4d2e444421956c353450737872fdc0.svg",
     "static/media/messenger.svg": "/the-room/static/media/messenger.392610667b2d24a04fdacbe1aa403dce.svg",
     "static/media/account-box.svg": "/the-room/static/media/account-box.70f3bc4ecdea0c1a6bcd184822203de1.svg",
+    "static/media/logout.svg": "/the-room/static/media/logout.86737cacaa7dd70f0c241b370fea518e.svg",
     "static/media/chevron.svg": "/the-room/static/media/chevron.52254b8ec9e2b910c175508f0dfe4601.svg",
     "static/media/arrow.svg": "/the-room/static/media/arrow.2e552680862d14cd24637c6387dfb5b7.svg",
     "static/media/plus.svg": "/the-room/static/media/plus.d5a88a59d9ab7bb15c7642d9d44ee039.svg",
     "static/media/bolt.svg": "/the-room/static/media/bolt.bbfd3d7aaf23b286af050b7e10125db6.svg",
     "static/media/caret.svg": "/the-room/static/media/caret.17f0a4fb24c6564ffcbd1ce6ce1d6c92.svg",
-    "main.91066eb6.css.map": "/the-room/static/css/main.91066eb6.css.map",
-    "main.8cc5f4dc.js.map": "/the-room/static/js/main.8cc5f4dc.js.map",
+    "main.ce573d06.css.map": "/the-room/static/css/main.ce573d06.css.map",
+    "main.c09b6f7a.js.map": "/the-room/static/js/main.c09b6f7a.js.map",
     "787.b28bcc09.chunk.js.map": "/the-room/static/js/787.b28bcc09.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.91066eb6.css",
-    "static/js/main.8cc5f4dc.js"
+    "static/css/main.ce573d06.css",
+    "static/js/main.c09b6f7a.js"
   ]
 }
