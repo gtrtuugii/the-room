@@ -1,0 +1,22 @@
+.home-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    background-color: #282A3A;
+    height: 93vh;
+    overflow: auto;
+    @media (max-width: 600px) {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(100px, 1fr)); /* Two columns on smaller screens */
+        grid-template-rows: repeat(3, minmax(100px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        
+     }
+  }
+
+  .home-page::-webkit-scrollbar{
+    display: none;
+  }

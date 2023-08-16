@@ -11,7 +11,7 @@
     height: 100%;
     width: 100%;
     padding: 10px;
-    
+    overflow: hidden;
 }
 
 .profile .container .header{
@@ -91,5 +91,9 @@
     color: #e4e6eb;
     border-radius: 0px 0px 5px 5px;
     box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+    overflow: scroll;
     
 }
+.profile .container .main-body::-webkit-scrollbar {
+    display: none;
+  }

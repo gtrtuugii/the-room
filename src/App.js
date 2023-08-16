@@ -16,6 +16,7 @@ import About from "./components/about/About.jsx";
 import Welcome from "./components/welcome/Welcome.jsx";
 import Profile from "./components/profile/profile";
 import CheckEmail from "./components/chat/check_email";
+import HomePage from "./components/homepage/HomePage.jsx";
 
 //  Context files
 import { useContext, useState, useEffect } from "react";
@@ -49,6 +50,7 @@ export default function App() {
       
         <Routes>
           <Route exact path="/home" element={ <ProctectedRoute><Dashboard/></ProctectedRoute> } />
+          <Route exact path="/app" element={ <ProctectedRoute><HomePage/></ProctectedRoute> } />
           <Route exact path="/login" element={<ChatLogin />} />
           <Route exact path="/register" element={<ChatRegister />} />
           <Route exact path="/chat" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />

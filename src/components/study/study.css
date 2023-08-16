@@ -21,6 +21,8 @@
     border: none;
 }
 
+
+
 .study .upload-files label{
     font-size: 15px;
     margin: 10px;
@@ -31,10 +33,16 @@
 .study .upload-files .input-group input{
     padding: 10px;
     border: none;
-    background-color: #808080;
+    background-color: #010101;
     color: whitesmoke;
     font-family: 'Rubik', sans-serif;
     border-radius: 2px;
+}
+
+.study .upload-files .input-group input[type="file"]::file-selector-button{
+    border: none;
+    background-color: #ffa31a;
+    border-radius: 5px;
 }
 
 .study .upload-files .input-group button{
@@ -66,8 +74,9 @@
     gap: 0;
     bottom: none;
     color: #010101;
-    background-color: #FF0000;
+    background-color: #ffa31a;
 }
+
 .study #spotify{
     height: 10vh;
     border-radius: 0%;

@@ -16,7 +16,10 @@ import { ReactComponent as CogIcon } from "./icons/cog.svg";
 import { ReactComponent as ChevronIcon } from "./icons/chevron.svg";
 import { ReactComponent as ArrowIcon } from "./icons/arrow.svg";
 import { ReactComponent as BoltIcon } from "./icons/bolt.svg";
+import { ReactComponent as LogOutIcon } from "./icons/logout.svg";
 import { ReactComponent as UserIcon } from "./icons/account-box.svg";
+import { ReactComponent as AppsIcon } from "./icons/four-squares-icon.svg";
+import { ReactComponent as PostIcon } from "./icons/edit-box-icon.svg";
 import { AuthContext } from "../context/context";
 
 export default function ToggleSidebar() {
@@ -43,16 +46,11 @@ export default function ToggleSidebar() {
         },
         {
           id: 2,
-          title: "Study Room",
-          url: "/study"
+          title: "Applications",
+          url: "/app"
         },
         {
           id:3,
-          title: "Chat",
-          url: "/chat"
-        },
-        {
-          id:4,
           title: "About Toby",
           url: "/about"
         }
@@ -121,11 +119,11 @@ export default function ToggleSidebar() {
            
 
 
-         
-          {currentUser && currentUser.emailVerified && <Link to='/home'><NavItem icon={<PlusIcon />}></NavItem></Link>}
+          {currentUser && currentUser.emailVerified && <Link to='/app'><NavItem icon={<AppsIcon />}/></Link>}
+          {currentUser && currentUser.emailVerified && <Link to='/home'><NavItem icon={<PostIcon />}></NavItem></Link>}
             
           {currentUser && currentUser.emailVerified && <Link to='/chat'><NavItem icon={<MessengerIcon />}/></Link>}
-       
+          
 
 
             <NavItem id="dropdown-item" icon={<CaretIcon />}>
@@ -226,11 +224,11 @@ function DropdownMenu() {
         onEnter={calcHeight}>
         <div className="menu">
           
-          <Link to={`/profile/${currentUser.uid}`}><DropdownItem>My Profile</DropdownItem></Link>
+          <Link to={`/profile/${currentUser.uid}`}><DropdownItem leftIcon={<UserIcon/>}>My Profile</DropdownItem></Link>
           
 
           
-          <DropdownItem onClick={logout}>Log Out</DropdownItem>
+          <DropdownItem leftIcon={<LogOutIcon/>} onClick={logout}>Log Out</DropdownItem>
           
 
         </div>
@@ -280,13 +278,13 @@ function GuestDropdownMenu() {
         onEnter={calcHeight}>
         <div className="menu">
           <Link to="/intro">
-            <DropdownItem>Introduction</DropdownItem>
+            <DropdownItem leftIcon={<UserIcon/>}>Introduction</DropdownItem>
           </Link>
           <Link to="/login">
-            <DropdownItem>Login</DropdownItem>
+            <DropdownItem leftIcon={<LogOutIcon/>}>Login</DropdownItem>
           </Link>
           <Link to="/register">
-            <DropdownItem>Create Account</DropdownItem>
+            <DropdownItem leftIcon={<PlusIcon/>}>Create Account</DropdownItem>
           </Link>
         </div>
       </CSSTransition>

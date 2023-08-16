@@ -14,7 +14,7 @@ import { ChatContext } from "../context/ChatContext";
 import { db, storage } from "../firebase/firebase";
 import { v4 as uuid } from 'uuid';
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { Timestamp, arrayUnion, collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from "firebase/firestore";
+import { Timestamp, arrayUnion, collection, doc, getDoc, getDocs, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
 
 function Dashboard() {
   const { currentUser } = useContext(AuthContext);
@@ -166,6 +166,27 @@ function Dashboard() {
     postsContainer.scrollTop = 0;
   };
 
+  // async function copyData() {
+  //   try {
+  //     const sourceDocRef = doc(db, 'posts', 'Bayasaa');
+  //     const sourceDocSnapshot = await getDoc(sourceDocRef);
+  
+  //     if (sourceDocSnapshot.exists()) {
+  //       const dataToCopy = sourceDocSnapshot.data();
+  
+  //       const targetDocRef = doc(db, 'posts', '50472581-8b3f-4d7e-bffd-b6c96d5ff58d');
+  //       await setDoc(targetDocRef, dataToCopy);
+  
+  //       console.log('Data copied successfully.');
+  //     } else {
+  //       console.log('Source document does not exist.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error copying data:', error);
+  //   }
+  // }
+  
+
 
   useEffect(()=>{
 
@@ -198,7 +219,7 @@ function Dashboard() {
       <div className="marquee" id="yzy">
         <marquee className="font-face-gm" onClick={fetchKanyeQuote}>{quote ? quote : <span>Click Me</span>} - Ye</marquee>
       </div>
-
+      
       <div className="container-fluid">
         <div className="post-popup">
           <Posts trigger={popup} setTrigger={setPopup}>

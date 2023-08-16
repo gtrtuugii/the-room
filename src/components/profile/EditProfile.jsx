@@ -110,37 +110,44 @@ const EditProfile = ({ currentUser, setTrigger }) => {
                     X
                 </button>
             </div>
-          
-          {successMessage && <div className="success-message">{successMessage}</div>}
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
-          <form onSubmit={handleSubmit}>
-            <label>
-              Display Name:
-              <input
-                className="form-control"
-                type="text"
-                value={newDisplayName}
-                onChange={(e) => setNewDisplayName(e.target.value)}
-              />
-            </label>
-            <label>
-              Upload New Photo:
-              <input className="form-control" type="file" accept="image/*" onChange={handlePhotoChange} />
-              {newPhotoURL && <img src={newPhotoURL} alt="New Profile" />}
-            </label>
-            <label>
-              New Password:
-              <input
-                className="form-control"
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-            </label>
+            <div className="card-body">
+              {successMessage && <div className="success-message">{successMessage}</div>}
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
+              <form onSubmit={handleSubmit}>
+                <label>
+                  Display Name:
+                  <input
+                    className="form-control"
+                    type="text"
+                    value={newDisplayName}
+                    onChange={(e) => setNewDisplayName(e.target.value)}
+                  />
+                </label>
+                <label>
+                  Upload New Photo:
+                  <input className="form-control" type="file" accept="image/*" onChange={handlePhotoChange} />
+                  {newPhotoURL && <img src={newPhotoURL} alt="New Profile" />}
+                </label>
+                <label>
+                  New Password:
+                  <input
+                    className="form-control"
+                    type="password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                </label>
+                
+
+              </form>
+            </div>
+            <div className="card-footer">
             <button type="submit">Save Changes</button>
-            {successMessage && <div className="success-message">{successMessage}</div>}
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
-          </form>
+              {successMessage && <div className="success-message">{successMessage}</div>}
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
+            </div>
+          
+
         </div>
       </div>
     ) : (
