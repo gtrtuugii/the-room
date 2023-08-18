@@ -23,14 +23,6 @@ Welcome to The Room project! This is a social media platform where users can con
 - User profiles with customizable information
 - Responsive design for various screen sizes
 
-## Getting Started
-
-To get started with "The Room," follow these steps:
-
-1. Clone this repository to your local machine.
-2. Install the necessary dependencies using `npm install`.
-3. Configure your Firebase credentials in the `firebase/firebase.js` file.
-4. Run the application using `npm start`.
 
 ## Usage
 
