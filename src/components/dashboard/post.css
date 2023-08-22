@@ -14,14 +14,21 @@
 }
 .post .card .card-header{
     padding: 5px;
-    display: inline-block;
+    display: flex;
     gap: 10px;
     box-shadow: 0px px 8px rgb(0 0 0 / 30%);
 }
 .post .card .card-header span{
     font-weight: 600px;
     font-size: 20px;
-    
+}
+.post .card .card-header .user span{
+    display: block;
+}
+
+.post .card .card-header .user #date{
+    font-size: 15px;
+    color: #c2c3c6;
 }
 .post .card .card-header img{
     width: 3em;
@@ -48,9 +55,11 @@
     
 }
 .post .card .card-footer{
-    box-shadow: 0px 4px 8px rgb(0 0 0 / 30%);
-}
-.post .card .card-footer span{
     padding: 5px;
-    
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 30%);
+    gap: 5px;
+}
+
+.post .card .card-footer button{
+    border-radius: 5px;
 }
