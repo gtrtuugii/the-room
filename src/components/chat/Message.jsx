@@ -10,6 +10,31 @@ const Message = ({message}) => {
   const {data} =  useContext(ChatContext);
   const ref = useRef();
 
+  // Function to format time difference
+  function formatTimeDifference(date) {
+        const now = new Date();
+        const diff = Math.floor((now - date) / 1000); // Difference in seconds
+  
+        if (diff < 60) {
+          return `${diff} seconds ago`;
+        } else if (diff < 3600) {
+          const minutes = Math.floor(diff / 60);
+          return `${minutes} ${minutes === 1 ? 'minute' : 'minutes'} ago`;
+        } else if (diff < 86400) {
+          const hours = Math.floor(diff / 3600);
+          return `${hours} ${hours === 1 ? 'hour' : 'hours'} ago`;
+        } else if (diff < 604800) {
+          const days = Math.floor(diff / 86400);
+          return `${days} ${days === 1 ? 'day' : 'days'} ago`;
+        } 
+        else {
+          // Display full date without the year
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          return date.toLocaleDateString('en-US', options);
+        }
+  }
+    
+
   useEffect(()=> {
     ref.current?.scrollIntoView({behavior:"smooth"})
   }, [message]);
@@ -31,13 +56,12 @@ const Message = ({message}) => {
 
         {/* To do: calculate date and time from now() */}
         {(message.text || message.img) &&  
-        <span className='time'>{
-          
-          message.date.toDate().toLocaleDateString() === Timestamp.now().toDate().toLocaleDateString() 
-          ? <span> {message.date.toDate().toLocaleTimeString()} </span> 
-          : <span> {message.date.toDate().toLocaleDateString() + ' ' + message.date.toDate().toLocaleTimeString()}</span>}
+        <span className='time'>
+          {
+          formatTimeDifference(message.date?.toDate())
 
-        </span> }
+         }
+         </span>}
        
         
       </div>

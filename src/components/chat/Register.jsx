@@ -155,7 +155,7 @@ const Register = () => {
                             <span>Add an avatar</span>
                         </label>
 
-                        <input className="form-control" id="avatar"  type="file"></input>
+                        <input className="form-control" id="avatar"  type="file" required></input>
 
                         <button className="btn"> Register </button>
                         {err && <span style={{ color: "red" }}>Something went wrong</span>}

@@ -17,6 +17,7 @@
     display: flex;
     gap: 10px;
     box-shadow: 0px px 8px rgb(0 0 0 / 30%);
+    
 }
 .post .card .card-header span{
     font-weight: 600px;
@@ -29,6 +30,18 @@
 .post .card .card-header .user #date{
     font-size: 15px;
     color: #c2c3c6;
+}
+
+.post .card .card-header {
+  
+    justify-content: space-between;
+    
+    
+}
+
+.post .card .card-header .user-info{
+    display: flex;
+    gap: 5px;
 }
 .post .card .card-header img{
     width: 3em;
@@ -58,8 +71,104 @@
     padding: 5px;
     box-shadow: 0px 4px 8px rgb(0 0 0 / 30%);
     gap: 5px;
+    display: block;
 }
 
-.post .card .card-footer button{
+.post .card .card-footer .post-info span{
+    gap: 5px;
+    padding: 5px;
+}
+
+   
+.post .card .card-footer .post-buttons button{
     border-radius: 5px;
+    cursor: pointer;
+    background-color: #282A3A;
+    color: #EBE6E6;
+    gap: 5px;
+    margin-left: 5px;
+    border: none;
+}
+
+.post .card .card-footer .post-buttons button.liked {
+    background-color: #464f95; 
+    color: white; 
+  }
+
+.post .card .card-footer .comments-section {
+    background-color: #282A3A;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+.post .card .card-footer .comments-section .new-comment .input-group{
+    border-radius: 10px;
+    padding: 5px;
+    
+}
+
+.post .card .card-footer .comments-section .new-comment img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+}
+
+.post .card .card-footer .comments-section .new-comment input{
+    background-color: #626788;
+    color: #e4e6eb;
+    border: none;
+    border-radius: 10px;
+ 
+}
+
+.post .card .card-footer .comments-section .new-comment input::placeholder{
+    color: #282A3A;
+}
+.post .card .card-footer .comments-section .new-comment button{
+    background-color: #3c3f57;
+    color: #e4e6eb;
+    border-radius: 5px;
+    
+    cursor: pointer;
+}
+.post .card .card-footer .comments-section .comment {
+    border-radius: 5px;
+    
+    padding: 5px;
+}
+.post .card .card-footer .comments-section .comment .comment-content{
+    display: flex;
+    
+    gap: 5px;
+    border-radius: 5px;
+}
+.post .card .card-footer .comments-section .comment .comment-content img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.post .card .card-footer .comments-section .comment .comment-content .comment-context{
+    background-color: #2e335c;
+    width: 100%;
+    border-radius: 0px 10px 10px 10px;
+}
+.post .card .card-footer .comments-section .comment .comment-content .comment-context .comment-author  {
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    width: auto;
+    
+}
+
+.post .card .card-footer .comments-section .comment .comment-content .comment-context .comment-author #author{
+    font-weight: bold;
+}
+
+.post .card .card-footer .comments-section .comment .comment-content .comment-context .comment-author #time{
+    color: #c2c3c6;
+    
+}
+.post .card .card-footer .comments-section .comment .comment-content .comment-context p{
+    padding: 5px;
 }
