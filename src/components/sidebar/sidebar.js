@@ -3,6 +3,7 @@ import styles from "./sidebar.css";
 import "./styles.css";
 
 import { logout, auth, db } from "../firebase/firebase";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -227,8 +228,14 @@ function DropdownMenu() {
           <Link to={`/profile/${currentUser.uid}`}><DropdownItem leftIcon={<UserIcon/>}>My Profile</DropdownItem></Link>
           
 
-          
-          <DropdownItem leftIcon={<LogOutIcon/>} onClick={logout}>Log Out</DropdownItem>
+          <div className="logOut" onClick={logout}>
+            <DropdownItem leftIcon={<LogOutIcon />} onClick={logout}>
+              Log Out
+            </DropdownItem>
+          </div>
+
+
+
           
 
         </div>
