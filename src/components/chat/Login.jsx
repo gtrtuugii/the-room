@@ -19,6 +19,7 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      
 
       if (user.emailVerified) {
         navigate('/home');

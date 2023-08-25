@@ -1,0 +1,67 @@
+.meme{
+    background-color: #282A3A;
+    font-family: 'Rubik', 'Ariel', sans-serif;
+    height: 90vh;
+}
+
+.meme .container{
+    padding: 15px;
+    
+}
+.meme .container .card{
+    height: 80vh;
+    overflow: auto;
+    background-color: azure;
+}
+
+.meme .container .card .card-header{
+    background-color: black;
+    color: aliceblue;
+}
+.meme .container .card .card-body{
+    background-color: azure;
+}
+.meme .container .card .card-body input{
+    gap: 10px;
+    display: block;
+    cursor: pointer;
+}
+
+.meme .container .card .card-body input[type="file"]::file-selector-button{
+    cursor: pointer;
+    border: none;
+    background-color: aqua;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.meme .container .card .card-body select{
+    gap: 5px;
+    cursor: pointer;
+}
+
+.meme .container .card .card-body label{
+    font-weight: bold;
+}
+
+.meme .container .card  img{
+    height: 50vh;
+    width: 50vw;
+    border-radius: 10px;
+}
+
+.meme .container .card .img-preview{
+    align-items: center;
+    justify-content: center;
+    background-color: azure;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.meme .container .card .card-footer{
+    background-color: black;
+}
+
+.meme .container .card .card-footer button{
+    cursor: pointer;
+}

@@ -17,6 +17,7 @@ import Welcome from "./components/welcome/Welcome.jsx";
 import Profile from "./components/profile/profile";
 import CheckEmail from "./components/chat/check_email";
 import HomePage from "./components/homepage/HomePage.jsx";
+import MemeCreator from "./components/meme/meme";
 
 //  Context files
 import { useContext, useState, useEffect } from "react";
@@ -56,6 +57,7 @@ export default function App() {
           <Route exact path="/chat" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
           <Route exact path="/study" element={<ProctectedRoute><Study/></ProctectedRoute>} />
           <Route exact path="/intro" element={<Intro />} />
+          <Route exact path="/meme" element={<MemeCreator />} />
           <Route path='/check-email' element={<CheckEmail user={currentUser}/>} />
           <Route exact path="/" element={<Welcome />} />
           <Route exact path="/about" element={<About />} />
