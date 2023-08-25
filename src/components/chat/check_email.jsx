@@ -15,6 +15,14 @@ const CheckEmail = ({ user }) => {
         }
       };
 
+    useEffect(() => {
+      if (user && user.emailVerified){
+        navigate('/home');
+      }
+        //if (!user) return navigate("/login");
+    }, [user]);
+
+    
     return (
         <div className='check-email'>
             <div className='check-email-container'>

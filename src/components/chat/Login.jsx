@@ -63,6 +63,7 @@ const Login = () => {
             </form>
            
             {err && <span style={{ color: "red" }}>{err}</span>}
+            
             <p>Don't have an account? <Link to="/register">Register.</Link></p>
         </div>
     </div>

@@ -109,3 +109,12 @@ font-weight: bold;
     color: blue;
     cursor: pointer;
 }
+
+.register .form-wrapper form #file-preview{
+    height: 100px;
+    width: fit-content;
+}
+
+.register .form-wrapper form #add-avatar{
+    border: 2px dashed black;
+}

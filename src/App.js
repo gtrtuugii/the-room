@@ -33,7 +33,7 @@ export default function App() {
     if(!currentUser){
       return <Navigate to="/login"/>
     }
-    else if(!currentUser.emailVerified){
+    else if(currentUser && !currentUser.emailVerified){
       return <Navigate to="/check-mail"/>
     }
     return children
