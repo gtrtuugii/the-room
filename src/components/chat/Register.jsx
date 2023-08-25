@@ -56,70 +56,95 @@ const Register = () => {
       return errors;
       };
 
-    // Handle Submit event
-    const handleSubmit = async (e) => {
-      setLoading(true);
-      e.preventDefault();
-      const displayName = e.target[0].value;
-      const email = e.target[1].value;
-      const password = e.target[2].value;
-      const file = e.target[3].files[0];
-
-      const validationErrors = await validateRegistrationInput(displayName, email, password);
-      setErrors(validationErrors);
-
-      if (Object.keys(validationErrors).length === 0) {
-        try {
-          //Create user
-          const res = await createUserWithEmailAndPassword(auth, email, password);
-          await sendEmailVerification(res.user);
-          //Create a unique image name
-          const date = new Date().getTime();
-          const storageRef = ref(storage, 'user-profiles/' + `${email + date}`);
-  
-          await uploadBytesResumable(storageRef, file).then(() => {
-            getDownloadURL(storageRef).then(async (downloadURL) => {
-              try {
-                //Update profile
-                await updateProfile(res.user, {
-                  displayName,
-                  photoURL: downloadURL,
+      const handleSubmit = async (e) => {
+        setLoading(true);
+        e.preventDefault();
+        const displayName = e.target[0].value;
+        const email = e.target[1].value;
+        const password = e.target[2].value;
+        const file = e.target[3].files[0];
+      
+        const validationErrors = await validateRegistrationInput(displayName, email, password);
+        setErrors(validationErrors);
+      
+        if (Object.keys(validationErrors).length === 0) {
+          try {
+            // Create user
+            const res = await createUserWithEmailAndPassword(auth, email, password);
+            await sendEmailVerification(res.user);
+      
+            if (file) {
+              // Create a unique image name
+              const date = new Date().getTime();
+              const storageRef = ref(storage, 'user-profiles/' + `${email + date}`);
+        
+              await uploadBytesResumable(storageRef, file).then(() => {
+                getDownloadURL(storageRef).then(async (downloadURL) => {
+                  try {
+                    // Update profile with photoURL
+                    await updateProfile(res.user, {
+                      displayName,
+                      photoURL: downloadURL,
+                    });
+      
+                    // Create user in the "users" collection
+                    await setDoc(doc(db, "users", res.user.uid), {
+                      uid: res.user.uid,
+                      authProvider: "local",
+                      displayName,
+                      email,
+                      photoURL: downloadURL,
+                    });
+      
+                    // Create a posts section for the user
+                    await setDoc(doc(db, "posts", res.user?.uid), {
+        
+                    });
+      
+                    // Create empty user chats in the "userChats" collection
+                    await setDoc(doc(db, "userChats", res.user.uid), {});
+      
+                    // Navigate to the appropriate page
+                    navigate('/check-email');
+                  } catch (err) {
+                    setErr(true);
+                    setLoading(false);
+                  }
                 });
-                //create user on firestore
-                await setDoc(doc(db, "users", res.user.uid), {
-                  uid: res.user.uid,
-                  authProvider: "local",
-                  displayName,
-                  email,
-                  photoURL: downloadURL,
-                });
-                await setDoc(doc(db, "posts", res.user?.uid), {
-  
-                });
-    
-                //create empty user chats on firestore
-                await setDoc(doc(db, "userChats", res.user.uid), {});
-                
-                
-              } catch (err) {
-                setErr(true);
-                setLoading(false);
-                
-              }
-            });
-          });
-        } catch (err) {
-          setErr(true);
-          setLoading(false);
-          
-          
+              });
+            } else {
+              // No profile image provided
+              // Update profile without photoURL
+              await updateProfile(res.user, {
+                displayName,
+              });
+      
+              // Create user in the "users" collection
+              await setDoc(doc(db, "users", res.user.uid), {
+                uid: res.user.uid,
+                authProvider: "local",
+                displayName,
+                email,
+              });
+      
+              // Create a posts section for the user
+              await setDoc(doc(db, "posts", res.user?.uid), {
+        
+              });
+      
+              // Create empty user chats in the "userChats" collection
+              await setDoc(doc(db, "userChats", res.user.uid), {});
+      
+              // Navigate to the appropriate page
+              navigate('/check-email');
+            }
+          } catch (err) {
+            setErr(true);
+            setLoading(false);
+          }
         }
-        navigate('/check-email');
-        
-        
-      }
- 
-    };
+      };
+          
 
     // const resendEmail = async()=>{
     //   if (currentUser && !currentUser.emailVerified) {
@@ -155,12 +180,13 @@ const Register = () => {
                             <span>Add an avatar</span>
                         </label>
 
-                        <input className="form-control" id="avatar"  type="file" required></input>
+                        <input className="form-control" id="avatar"  type="file"></input>
 
                         <button className="btn"> Register </button>
                         {err && <span style={{ color: "red" }}>Something went wrong</span>}
                         {errors.username && <p className="error">{errors.username}</p>}
                         {errors.email && <p className="error">{errors.email}</p>}
+                        {errors.password && <p className="error">{errors.password}</p>}
                         {errors.password && <p className="error">{errors.password}</p>}
                         {loading && "Joining the room please wait..."}
 
@@ -175,3 +201,4 @@ const Register = () => {
 }
 
 export default Register
+
