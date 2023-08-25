@@ -25,6 +25,7 @@
     gap: 10px;
     display: block;
     cursor: pointer;
+    box-shadow:  0px 3px 4px 3px rgb(0 0 0 / 16%);
 }
 
 .meme .container .card .card-body input[type="file"]::file-selector-button{
@@ -33,21 +34,27 @@
     background-color: aqua;
     border-radius: 5px;
     font-weight: bold;
+    
 }
 
 .meme .container .card .card-body select{
     gap: 5px;
     cursor: pointer;
+    box-shadow:  0px 3px 4px 3px rgb(0 0 0 / 16%);
+    
 }
 
 .meme .container .card .card-body label{
     font-weight: bold;
+
+
 }
 
 .meme .container .card  img{
     height: 50vh;
     width: 50vw;
     border-radius: 10px;
+    box-shadow:  0px 3px 4px 3px rgb(0 0 0 / 16%);
 }
 
 .meme .container .card .img-preview{
@@ -56,12 +63,26 @@
     background-color: azure;
     margin-bottom: 10px;
     margin-left: 10px;
+    
 }
 
 .meme .container .card .card-footer{
+    display: block;
     background-color: black;
+    color: aliceblue;
+    
 }
 
 .meme .container .card .card-footer button{
     cursor: pointer;
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    
+}
+
+.meme .container .card .card-footer button:hover{
+    background-color: aqua;
+
 }
