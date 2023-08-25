@@ -32,7 +32,7 @@ const Login = () => {
       } else if (error.code === 'auth/wrong-password') {
         setErr('Invalid password');
       } else {
-        setErr('Something went wrong');
+        setErr('Something went wrong, try refreshing the page?');
       }
     }
   };

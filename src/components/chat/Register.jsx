@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 
 import "./styling/register.css";
 import AddImage from "./media/addimgs.svg"
+import AddedImage from "./media/checkmark-image.svg"
 
 // Firebase imports
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
@@ -44,7 +45,7 @@ const Register = () => {
       // Check password requirements
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
       if (!passwordRegex.test(password)) {
-        errors.password = 'Password must have at least 8 characters, 1 uppercase letter, and 1 number';
+        errors.password = 'Password must have at least 8 characters, 1 uppercase letter, and 1 number Hint: You might be using illegal characters, for now use a password 8 char long';
       }
 
       // Check valid email format
@@ -176,7 +177,9 @@ const Register = () => {
                         <input className="form-control" type="password" placeholder="Password" required/>
                         
                         <label htmlFor="avatar">
-                            <img src={AddImage} alt="add-img" />
+
+                            {AddImage ? <img src={AddedImage}  alt=""/> : <img src={AddImage}  alt=""/>}
+                            
                             <span>Add an avatar</span>
                         </label>
 

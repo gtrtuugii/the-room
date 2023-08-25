@@ -56,6 +56,7 @@ export default function App() {
           <Route exact path="/chat" element={<ProctectedRoute><ChatHome/></ProctectedRoute>} />
           <Route exact path="/study" element={<ProctectedRoute><Study/></ProctectedRoute>} />
           <Route exact path="/intro" element={<Intro />} />
+          <Route path='/check-email' element={<CheckEmail user={currentUser}/>} />
           <Route exact path="/" element={<Welcome />} />
           <Route exact path="/about" element={<About />} />
           {currentUser && (
@@ -65,7 +66,7 @@ export default function App() {
               element={<ProctectedRoute><Profile/></ProctectedRoute>}
             />
             )}
-          <Route exact path='/check-email' element={<CheckEmail user={currentUser}/>} />
+          
         </Routes>
       </HashRouter>
     </div>
