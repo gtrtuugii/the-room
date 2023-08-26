@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/the-room/static/css/main.b89e1629.css",
-    "main.js": "/the-room/static/js/main.a1189a23.js",
+    "main.css": "/the-room/static/css/main.dbc56616.css",
+    "main.js": "/the-room/static/js/main.833e3532.js",
     "static/js/787.b28bcc09.chunk.js": "/the-room/static/js/787.b28bcc09.chunk.js",
     "static/media/bg.jpg": "/the-room/static/media/bg.5d9686b18991716a6aa9.jpg",
     "static/media/headshot.png": "/the-room/static/media/headshot.d115bc1f33ae988b32df.png",
@@ -30,12 +30,12 @@
     "static/media/plus.svg": "/the-room/static/media/plus.d5a88a59d9ab7bb15c7642d9d44ee039.svg",
     "static/media/bolt.svg": "/the-room/static/media/bolt.bbfd3d7aaf23b286af050b7e10125db6.svg",
     "static/media/caret.svg": "/the-room/static/media/caret.17f0a4fb24c6564ffcbd1ce6ce1d6c92.svg",
-    "main.b89e1629.css.map": "/the-room/static/css/main.b89e1629.css.map",
-    "main.a1189a23.js.map": "/the-room/static/js/main.a1189a23.js.map",
+    "main.dbc56616.css.map": "/the-room/static/css/main.dbc56616.css.map",
+    "main.833e3532.js.map": "/the-room/static/js/main.833e3532.js.map",
     "787.b28bcc09.chunk.js.map": "/the-room/static/js/787.b28bcc09.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b89e1629.css",
-    "static/js/main.a1189a23.js"
+    "static/css/main.dbc56616.css",
+    "static/js/main.833e3532.js"
   ]
 }
