@@ -11,7 +11,7 @@ const EditProfile = ({ currentUser, setTrigger }) => {
     const [newPassword, setNewPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    
+    const [loadingMessage, setLoadingMessage] = useState('')
 
     const handlePhotoChange = (e) => {
         if (e.target.files[0]) {
@@ -48,20 +48,21 @@ const EditProfile = ({ currentUser, setTrigger }) => {
         return errors;
         };
 
-        const handleSubmit = async (e) => {
-            e.preventDefault();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
           
             // Validation checks
-            const validationErrors = validateRegistrationInput(newDisplayName, newPassword);
+      const validationErrors = validateRegistrationInput(newDisplayName, newPassword);
           
-            if (Object.keys(validationErrors).length > 0) {
+      if (Object.keys(validationErrors).length > 0) {
               // There are validation errors, handle them
-              setErrorMessage('Validation errors encountered');
-              setSuccessMessage('');
-              return; // Exit early
-            }
+        setErrorMessage('Validation errors encountered');
+        setSuccessMessage('');
+        return; // Exit early
+      }
           
-            try {
+      try {
+        setLoadingMessage("Please wait while we are updating your information")
               if (newDisplayName !== currentUser.displayName) {
                 await updateProfile(auth.currentUser, {
                   displayName: newDisplayName,
@@ -72,18 +73,27 @@ const EditProfile = ({ currentUser, setTrigger }) => {
               }
           
               if (newPhotoURL) {
-                const storageRef = ref(storage, 'user-profiles/' + `${auth.currentUser.email + Date.now()}`);
                 
-                await uploadBytesResumable(storageRef, newPhotoURL);
+                const response = await fetch(newPhotoURL); // Download the image
+                const blob = await response.blob(); // Convert the response to a Blob
+                const storageRef = ref(storage, 'user-profiles/' + `${auth.currentUser.email + Date.now()}`);
+                await uploadBytesResumable(storageRef, blob); // Upload the Blob
+                
           
                 const downloadURL = await getDownloadURL(storageRef);
-          
+                
                 await updateProfile(auth.currentUser, {
-                  photoURL: downloadURL,
-                });
+                    photoURL: downloadURL,
+                  });
+
+                
+
+
                 await updateDoc(doc(db, 'users', currentUser.uid), {
                   photoURL: downloadURL,
                 });
+
+                
               }
           
               if (newPassword) {
@@ -96,6 +106,7 @@ const EditProfile = ({ currentUser, setTrigger }) => {
               setErrorMessage('Error updating profile: ' + error.message);
               setSuccessMessage('');
             }
+            setLoadingMessage('')
             setTrigger(false); // Close the edit profile popup
           };
           
@@ -137,12 +148,12 @@ const EditProfile = ({ currentUser, setTrigger }) => {
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
                 </label>
-                
-
+                {loadingMessage && <div className="loading">{loadingMessage}</div>}
+                <button type="submit" onClick={handleSubmit}>Save Changes</button>
               </form>
             </div>
             <div className="card-footer">
-            <button type="submit">Save Changes</button>
+            
               {successMessage && <div className="success-message">{successMessage}</div>}
               {errorMessage && <div className="error-message">{errorMessage}</div>}
             </div>

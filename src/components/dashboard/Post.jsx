@@ -260,10 +260,10 @@ const Post = ({post}) => {
                     <div className="new-comment">
                       
 
-                      <div class="input-group mb-3">
+                      <div className="input-group mb-3">
                         <img alt='user profile img' src={currentUser?.photoURL}></img>
-                        <input type="text" class="form-control" value={newComment} placeholder="Add a comment..." onKeyDown={handleKey} onChange={(e) => setNewComment(e.target.value)} aria-label="Add a comment..." aria-describedby="button-addon2"/>
-                        <button class="btn" type="button" id="button-addon2" onClick={() => handleComment(post.id)}>Post</button>
+                        <input type="text" className="form-control" value={newComment} placeholder="Add a comment..." onKeyDown={handleKey} onChange={(e) => setNewComment(e.target.value)} aria-label="Add a comment..." aria-describedby="button-addon2"/>
+                        <button className="btn" type="button" id="button-addon2" onClick={() => handleComment(post.id)}>Post</button>
                       </div>
                     </div>
                   </div>

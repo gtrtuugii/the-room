@@ -54,7 +54,7 @@ const Register = () => {
       // Check password requirements
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
       if (!passwordRegex.test(password)) {
-        errors.password = 'Password must have at least 8 characters, 1 uppercase letter, and 1 number Hint: You might be using illegal characters, for now use a password 8 char long';
+        errors.password = 'Password must have at least 8 characters, 1 uppercase letter, and 1 number Hint: You might be using illegal characters "+,.!", for now use a password 8 char long';
       }
 
       // Check valid email format
@@ -64,9 +64,9 @@ const Register = () => {
       }
 
       return errors;
-      };
+    };
 
-      const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         setLoading(true);
         e.preventDefault();
         const displayName = e.target[0].value;
