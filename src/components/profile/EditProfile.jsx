@@ -38,11 +38,32 @@ const EditProfile = ({ currentUser, setTrigger }) => {
         if (illegalUsernames.includes(newDisplayName)) {
           errors.username = 'Username is not allowed';
         }
+
+        // Character limit
+        if (username.length > 10) {
+          errors.username = 'Username must be no more than 10 characters';
+        }
+        if (illegalUsernames.includes(username)) {
+          errors.username = 'Username is not allowed';
+        }
+
+        // Check if the username contains variations of illegal names with underscores or periods
+        const usernamePattern = new RegExp(illegalUsernames.map(name => `${name}[_.]|[_.]${name}`).join('|'), 'ig');
+        
+        if (usernamePattern.test(username)) {
+          errors.username = 'Username is not allowed';
+        }
+        
+
+        // Check if the username is in the list of illegal usernames
+        if (illegalUsernames.includes(username.toLowerCase())) {
+          errors.username = 'Username is not allowed';
+        }
   
         // Check password requirements
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
         if (!passwordRegex.test(newPassword)) {
-          errors.password = 'Password must have at least 8 characters, 1 uppercase letter, and 1 number';
+          errors.password = 'Password must have at least 8 characters, 1 uppercase letter, and 1 number, do not include special characters';
         }
   
         return errors;

@@ -47,7 +47,24 @@ const Register = () => {
       // Add allDisplayNames to the illegalUsernames list
       illegalUsernames.push(...allDisplayNames);
 
+      // Character limit
+      if (username.length > 10) {
+        errors.username = 'Username must be no more than 10 characters';
+      }
       if (illegalUsernames.includes(username)) {
+        errors.username = 'Username is not allowed';
+      }
+
+      // Check if the username contains variations of illegal names with underscores or periods
+      const usernamePattern = new RegExp(illegalUsernames.map(name => `${name}[_.]|[_.]${name}`).join('|'), 'ig');
+      
+      if (usernamePattern.test(username)) {
+        errors.username = 'Username is not allowed';
+      }
+      
+
+      // Check if the username is in the list of illegal usernames
+      if (illegalUsernames.includes(username.toLowerCase())) {
         errors.username = 'Username is not allowed';
       }
 
@@ -107,7 +124,7 @@ const Register = () => {
                     });
       
                     // Create a posts section for the user
-                    await setDoc(doc(db, "posts", res.user?.uid), {
+                    await setDoc(doc(db, "posts", res.user.uid), {
         
                     });
       
@@ -138,7 +155,7 @@ const Register = () => {
               });
       
               // Create a posts section for the user
-              await setDoc(doc(db, "posts", res.user?.uid), {
+              await setDoc(doc(db, "posts", res.user.uid), {
         
               });
       
@@ -200,7 +217,7 @@ const Register = () => {
 
                         <div className="form-check">
                           <input className="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-                          <label className="form-check-label" for="defaultCheck1">
+                          <label className="form-check-label" htmlFor="defaultCheck1">
                             By pressing this you agree to our 
                           </label>
 
@@ -209,7 +226,7 @@ const Register = () => {
                           </span>
 
 
-                          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog">
                               <div className="modal-content">
                                 <div className="modal-header">
@@ -217,11 +234,12 @@ const Register = () => {
                                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                                 </div>
                                 <div className="modal-body">
-                                <p>
+                                <p> 
                                 These Terms and Conditions govern your use of The Room provided by Tuguldur Gantumur. By accessing or using the Service, you agree to be bound by these terms. If you do not agree with any part of these terms, please do not use the Service.
+                                </p>
                                 <h3>User Conduct</h3>
                                 
-
+                              <p>
                                 By using the Service, you agree to abide by all applicable laws and regulations and not to engage in any of the following activities:
 
                                 - Violating any laws or regulations
@@ -229,7 +247,7 @@ const Register = () => {
                                 - Impersonating any person or entity, or falsely representing your affiliation with a person or entity
                                 - Using the Service for any illegal or unauthorized purpose
                                 - Uploading or transmitting any harmful code, viruses, or other destructive features
-
+                              </p>
                               <h3>Intellectual Property</h3> 
 
                                 All content, features, and functionality available through the Service, including but not limited to text, graphics, logos, images, and software, are the property of [Your Company Name] and are protected by intellectual property laws.
@@ -250,7 +268,7 @@ const Register = () => {
 
                                 These terms shall be governed by and construed in accordance with the laws of Federal Court of Australia. Any legal action or proceeding arising out of or relating to these terms shall be exclusively brought in the courts located in Federal Court of Australia, and you consent to the personal jurisdiction of such courts.
 
-                                </p>
+                              
                                 </div>
                                 <div className="modal-footer">
                                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
