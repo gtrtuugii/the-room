@@ -182,24 +182,54 @@ const Post = ({post}) => {
                   </div>
                 </div>
 
+                {/* 
+                  {post.publisherId === currentUser.uid ?
+                    <div className="del">
+                      <button onClick={() => setShowDeletePopup(true)} title="Delete post"className='btn-dark'>X</button>
+                    </div>
+                    : ""
+                  } */}
 
-                {post.publisherId === currentUser.uid ?
-                  <div className="del">
-                    <button onClick={() => setShowDeletePopup(true)} title="Delete post"className='btn-dark'>X</button>
+                  {/* {showDeletePopup && (
+                    <DeleteConfirmationPopup
+                      onDelete={() => {
+                        handleDeletePost(post.id);
+                        setShowDeletePopup(false); // Close the popup
+                      }}
+                      onCancel={() => setShowDeletePopup(false)}
+                    />
+                  )}   */}
+
+                  {/* This doesnt work because currentUser is auth and has no role property */}
+                {(post.publisherId === currentUser.uid || currentUser?.role === "admin" )   ? 
+                  <div className="delete-post">
+                    <button className="btn-dark" style={{cursor: "pointer", borderRadius: "5px"}} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Delete
+                    </button>
+                    <div className="modal fade"  id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div className="modal-dialog" >
+                        <div className="modal-content">
+                          <div className="modal-header" style={{backgroundColor:"#282A3A"}}>
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Delete post</h1>
+                            <button type="button" style={{backgroundColor: "#3c3f57" , borderRadius: "50%"}} className="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                          </div>
+                          <div className="modal-body" style={{backgroundColor:"#3c3f57"}}>
+                            <span style={{color: "red", border : "none"}}> Are you sure you want to delete this post?</span>
+                          </div>
+                          <div className="modal-footer" style={{backgroundColor:"#282A3A"}}>
+                            <button type="button" style={{backgroundColor:"#3c3f57", color : "red"}} className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => handleDeletePost(post.id)} >Delete</button>
+                            <button type="button"  style={{backgroundColor:"#3c3f57"}} className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   : ""
                 }
-
-                {showDeletePopup && (
-                  <DeleteConfirmationPopup
-                    onDelete={() => {
-                      handleDeletePost(post.id);
-                      setShowDeletePopup(false); // Close the popup
-                    }}
-                    onCancel={() => setShowDeletePopup(false)}
-                  />
-                )}
               </div>
+
+         
               
               <div className="card-body">
                 
