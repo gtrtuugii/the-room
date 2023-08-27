@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AuthContext } from '../context/context';
 import { ChatContext } from '../context/ChatContext';
+import Arrow from "../chat/media/arrow.svg";
+
 import "./post.css";
 import { doc, getDoc, updateDoc, deleteDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
@@ -293,7 +295,14 @@ const Post = ({post}) => {
                       <div className="input-group mb-3">
                         <img alt='user profile img' src={currentUser?.photoURL}></img>
                         <input type="text" className="form-control" value={newComment} placeholder="Add a comment..." onKeyDown={handleKey} onChange={(e) => setNewComment(e.target.value)} aria-label="Add a comment..." aria-describedby="button-addon2"/>
-                        <button className="btn" type="button" id="button-addon2" onClick={() => handleComment(post.id)}>Post</button>
+                        {newComment ?
+                          <button className="btn" type="button" id="button-addon2" onClick={() => handleComment(post.id)}>
+                            <img src={Arrow} className='arrow' alt="arrow" />
+                          </button>
+                          :
+                          <button className="btn" type="button" id="button-addon2" onClick={() => handleComment(post.id)}>Post</button>
+                        }
+                        
                       </div>
                     </div>
                   </div>

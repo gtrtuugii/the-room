@@ -8,7 +8,7 @@ const blocks = [
   { title: 'Post', icon: '📱', path: '/home' },
   { title: 'Chat', icon: '💬', path: '/chat' },
   { title: 'Study', icon: '📚', path: '/study' },
-  { title: 'MemeCreator', icon: '🃏', path: '/meme' },
+  { title: 'Meme Creator', icon: '🃏', path: '/meme' },
   { title: 'Coming Soon', icon: '👾', path: '#' },
 
 

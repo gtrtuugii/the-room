@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Raccoon from "./media/raccoon-icon.svg";
+import SearchIcon from "./media/search-icon.svg";
 import "./styling/search.css";
 import { db } from '../firebase/firebase';
 import { collection, getDocs, query, setDoc, where, doc, updateDoc, serverTimestamp, getDoc } from 'firebase/firestore';
@@ -76,7 +77,9 @@ const Search = () => {
   return (
     <div className='search'>
       <div className='search-form'>
-        <i className="fa-solid fa-magnifying-glass"></i>
+        <button className='btn' onClick={handleSearch}>
+          <img src={SearchIcon} alt="search" />
+        </button>
         <input type="text" placeholder='Find a friend' onKeyDown={handleKey} value={username} onChange={e=> setUsername(e.target.value)}/>
       </div>
       {err && <span style={{ color: "red" }}> User not found</span>}

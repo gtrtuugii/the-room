@@ -50,3 +50,8 @@
     color: white;
     background-color: rgb(47, 103, 177);
 }
+
+.chat-input .send .arrow {
+    fill: #ffffff; /* changes the color to red */
+    filter: invert(1)
+}

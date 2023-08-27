@@ -8,6 +8,8 @@
 
 .search .search-form {
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -23,13 +25,43 @@
     @media (max-width: 425px) {
         width: 90%;
         font-size: 12px;
-        
+     }
+     
+}
+.search .search-form button{
+    border-radius: 50%;
+    background-color: #9DB2BF;
+    margin: 0;
+    margin-right: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 425px) {
+        height: 10px;
+        width: 10px;
+        border-radius: 5px;
      }
 }
+
+
+.search .search-form button img{
+    height: 15px;
+    width: 15px;
+
+    @media (max-width: 425px) {
+        height: 5px;
+        width: 5px;
+
+
+     }
+}
+
 .search .user-chat{
     padding: 10px;
     display: flex;
     align-items: center;
+   
     gap: 10px;
     color: white;
     cursor: pointer;

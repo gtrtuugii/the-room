@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import "./styling/input.css";
-import AddImage from "./media/addimgs.svg"
+import AddImage from "./media/addimgs.svg";
+import Arrow from "./media/arrow.svg";
 import AddedImage from "./media/checkmark-image.svg"
 import { ChatContext } from '../context/ChatContext';
 import { AuthContext } from '../context/context';
@@ -144,7 +145,14 @@ const Input = () => {
           {img ? <img src={AddedImage}  alt=""/> : <img src={AddImage}  alt=""/>}
           
         </label>
-        <button className='btn' onClick={handleSend}>Send</button>
+        {text ?
+          <button className='btn' onClick={handleSend}>
+            <img src={Arrow} alt="arr" className='arrow'/>
+          </button>
+          :
+          <button className='btn' onClick={handleSend}>Send</button>
+        }
+        
       </div>
     </div>
   )

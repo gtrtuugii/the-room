@@ -129,8 +129,12 @@
     background-color: #3c3f57;
     color: #e4e6eb;
     border-radius: 5px;
-    
     cursor: pointer;
+}
+
+.post .card .card-footer .comments-section .new-comment .arrow{
+    height: 20px;
+    filter: invert(1)
 }
 .post .card .card-footer .comments-section .comment {
     border-radius: 5px;
