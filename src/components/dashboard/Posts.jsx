@@ -86,7 +86,7 @@ const Posts = (props) => {
                   });
       
     
-      
+                  setTitle("");
                   setText('');
                   setImg(null);
               
@@ -111,7 +111,7 @@ const Posts = (props) => {
         }
     
     
-    
+        setTitle("");
         setText("");
         setImg(null);
         props.setTrigger(false);
