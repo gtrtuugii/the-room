@@ -203,8 +203,8 @@ const Post = ({post}) => {
                   {/* This doesnt work because currentUser is auth and has no role property */}
                 {(post.publisherId === currentUser.uid || currentUser?.role === "admin" )   ? 
                   <div className="delete-post">
-                    <button className="btn-dark" style={{cursor: "pointer", borderRadius: "5px"}} data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Delete
+                    <button className="btn-dark" style={{cursor: "pointer", borderRadius: "5px", border:"none"}} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      X
                     </button>
                     <div className="modal fade"  id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div className="modal-dialog" >
