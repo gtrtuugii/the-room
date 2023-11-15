@@ -32,13 +32,13 @@ import {getStorage} from "firebase/storage"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD7L35MwKZjw3U7ZBfYVJ5tqWjmxhu_uv8",
+  apiKey: "XXXX",
   authDomain: "the-locker-room-65105.firebaseapp.com",
   projectId: "the-locker-room-65105",
   storageBucket: "the-locker-room-65105.appspot.com",
-  messagingSenderId: "633591322475",
-  appId: "1:633591322475:web:34f904d7a81679743b5e2e",
-  measurementId: "G-MEXCPXRTMB"
+  messagingSenderId: "XXXXX",
+  appId: "X:XXXX:web:XXXX",
+  measurementId: "G-XXXX"
 };
 
 // Initialize Firebase
